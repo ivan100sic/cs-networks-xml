@@ -1052,16 +1052,247 @@
 
 	<pitanje id='34'>
 		<naslov>
-
+			Kodovi za ispravljanje grešaka
 		</naslov>
 		<prez>
-
+			07/21:32
 		</prez>
 		<book>
-
+			141:143
 		</book>
 		<laza>
+			Postoje dve strategije kod obrade grešaka:
 
+			+ U svaki blok podataka uključuje se i redundantni deo pomoću
+				kojeg primalac zaključuje šta su stvarni podaci. Ovo se još
+				naziva i forward error correction
+			+ U redundantni deo se dodaje samo onoliko podataka koliko je
+				dovoljno da se zaključi da li je došlo do greške
+
+			Na visoko pouzdanim kanalima kao što je optičko vlakno efikasnije
+				je koristiti detekciju a na kanalima sa visokom učestanošću
+				grešaka je efikasnija prva metoda
+
+			Pojam Hemingovog rastojanja, hemingova distanca koda. Za detekciju
+				treba d+1, za korekciju 2d+1
+			Bit parnosti - jednostavan način za detekciju 1 greške
+			Primer hemingovog koda za detekciju dvostruke greške:
+				{00000, 11111} ^ 2
+			Jednačina donje granice za broj bitova potrebnih za ispravljanje
+				jednostrukih grešaka: m + r + 1 &lt;= 2^n, sa izvođenjem
+			Ovu granicu je moguće dostići Hemingovom metodom, opis algoritma
+
+			Modifikacija Hemingovog koda za korekciju rafalnih grešaka dužine
+				najviše k. Uzmemo k kodnih reči (dobijenih nakon primene H.A.
+				, smestimo ih u vrste matrice a zatim pošaljemo kolone. Ako
+				dođe do rafalne greške dužine do k, znamo da nijedna vrsta
+				neće imati više od jednog pogrešnog bita, pa će HA korektno
+				naći polazne kodne reči
+		</laza>
+	</pitanje>
+
+	<pitanje id='35'>
+		<naslov>
+			Kodovi za otkrivanje grešaka
+		</naslov>
+		<prez>
+			07/33:49
+		</prez>
+		<book>
+			143:146
+		</book>
+		<laza>
+			Počnimo sa primerom
+			Ako je učestalost grešaka 1e-6 po bitu a veličina bloka 1000
+				bitova, potrebno je 10 kontrolnih bitova na 1000 bitova poruke
+				za korekciju grešaka
+			Za 1 megabit podataka treba nam 10000 kontrolnih bitova.
+			Ako umesto umesto ovoga koristimo samo detekciju jednostruke greške
+				tj bit parnosti, u proseku ćemo imati jednu grešku na megabit
+				podataka pa ćemo jednom morati da pošaljemo ceo blok ponovo.
+				Kako taj jedan blok ima 1001 bit a potrošili smo 1000 bitova
+				(po jedan za svaki blok) na detekciju grešaka, utrošili smo
+				2001 bit, što je dosta manje nego 10000 drugom tehnikom.
+			Poenta priče - zaista je nekad bolje koristiti
+				samo detekciju grešaka
+
+			Rafalne greške
+			Ako se bloku priključi samo jedan bit parnosti pa takav blok bude
+				izobličen dugačkom rafalnom greškom, verovatnoća da će ona biti
+				otkrivena je samo 0.5
+			Zašto - posmatrajmo skup svih rafalnih grešaka dužine n, gde je n
+				bar 3. Tačno polovina njih će biti prihvaćena tj. imaće istu
+				parnost kao originalni blok.
+			Verovatnoća se može poboljšati ako se blok posmatra kao matrica sa
+				n kolona i k vrsta, gde se bit parnosti računa za svaku kolonu.
+			Ovom metodom se može otkriti svaka rafalna greška dužine ne više
+				od n.
+			Ako je blok izobličen dužom rafalnom greškom ili dejstvom više
+				kraćih rafala, verovatnoća da će biti prihvaćen kao ispravan
+				je 2^-n. Verovatnoća da je neka kolona ispravna je 0.5, a ima
+				ih n, i ako smatramo da su njihove ispravnosti međusobno
+				nezavisne, dolazimo do pomenutog rezultata
+
+			U praksi se koristi druga metoda: CRC (Cyclic Redundancy Check)
+			Sekvenca bitova posmatra se kao polinom u Z_2[x]
+			Pošiljalac i primalac moraju da se slože oko generatorskog
+				polinoma G(x) - prvi i poslednji bit moraju biti jedinice.
+			Algoritam:
+			+ Ako je r stepen polinoma G, dodamo r nula na kraj manje težine
+				okvira, tako dobijamo polinom x^r M(x)
+			+ Nalazimo ostatak T(x) pri deljenju x^r M(x) sa G(x)
+			+ Rezultat je polinom x^r M(x) - T(x)
+				Pošto radimo aritmetiku sa polinomima po modulu 2, ovo je isto
+				kao polinom x^r M(x) + T(x).
+			Napomenimo da T(x) ne može da ima stepen veći od r-1 odnosno više
+				od r bitova
+			Na osnovu definicije lako se pokazuje da je T(x) deljiv sa G(x).
+			Primalac prima T'(x) = T(x) + E(x). U slučaju greške je E(x)
+				različito od nula polinoma.
+			Propustiće se greške koje odgovaraju polinomima čiji je činilac
+				G(x) a ostale se detektuju
+
+			Osobine G(x) i tipovi grešaka
+
+			Jednobitna greška, x^i, sigurna detekcija ako G(x) sadrži bar dva
+				člana
+			Dvobitna greška, x^i + x^j = x^j(x^(i-j) + 1), ako G(x) nije
+				deljivo sa x, dovoljan uslov za otkrivanje svih dvostrukih
+				grešaka je da G(x) ne deli polinom x^k + 1 za svako k do
+				maksimalne vrednosti i-j, odnosno dužine okvira - 1
+			Ako E(x) ima neparan broj bitova onda će ga detektovati svako
+				G(x) koje ima paran broj bitova - dokaz preko polinoma x+1
+			Poznati su polinomi niskog stepena koji mogu da zaštite dugačke
+				okvire, npr (15, 14, 1) ne deli (k, 1) za k do 32768
+			Svaka rafalna greška dužine do r će biti otkrivena ukoliko G(x)
+				nije deljivo sa x
+			Rafalna greška dužine r + 1 biće prihvaćena samo ukoliko je ona
+				identična polinomu G(x), verovatnoća za ovo je 1/2^(r-1)
+			U IEEE 802 koristi se polinom (32, 26, 23, 22, 16, 12, 11,
+				8, 7, 5, 4, 2, 1, 0)
+		</laza>
+	</pitanje>
+
+	<pitanje id='36'>
+		<naslov>
+			Protokol HDLC
+		</naslov>
+		<prez>
+			07/50:57
+		</prez>
+		<book>
+			172:174
+		</book>
+		<laza>
+			High-level Data Link Control
+			Protokol za upravljanje povezivanjem podataka na visokom nivou
+			HDLC je protokol čije se varijante decenijama koriste i imaju
+				mnoge primene
+			Grupa bliskih protokola nastala iz protokola sloja veze
+				korišćenog kod IBM-ovih centralizovanih računara - SDLC
+				odn. Synchronous DLC
+			IBM je predložio SDLC organizacijama ANSI i ISO, ANSI je napravio
+				modifikaciju ADDCP - Advanced Data Communication Control
+				Procedure, a ISO HDLC
+			CCITT je usvojio modifikaciju ISO-ovog HDLC-a za svoj Link
+				Access Procedure kao deo standarda za mrežni interfejs X.25
+				i kasniju modifikaciju LAPB
+			Svi pomenuti protokoli su bazirani na istom principu:
+			+ Bit orijentisani su
+			+ Koriste umetanje bitova
+			Svi bit-orijentisani protokoli koriste strukturu okvira:
+			+ 8 bitova 01111110
+			+ 8 bitova za adresu
+			+ 8 kontrolnih bitova
+			+ 0 ili više bitova podataka
+			+ 16 bitova kontrolna suma
+			+ 8 bitova 01111110
+			Sadržaj polja Control određuje vrstu okvira. Postoje tri tipa:
+			Bitovi su navedeni od najlakših do najtežih. Veliki propust knjige
+			+ a) Informacioni (0, Seq3, P/F, Next)
+			+ b) Supervizorski (1, 0, Tip, P/F, Next)
+			+ c) Nenumerisani (1, 1, Tip, P/F, Modifier)
+			Protokoli koriste klizne prozore i trobitne redne brojeve
+			U svakom trenutku na vezi sme da bude do 7 nepotvrđenih okvira
+			Seq i Next se koriste za sinhronizaciju, next sadrži sledeći
+				očekivani okvir
+			P/F (Poll/Final) se koristi kada računar poziva grupu terminala.
+				U svim okvirima sem poslednjeg je vrednost P, u poslednjem F
+			Type razlikuje tipove supervizorskih okvira:
+			+ 0 RECEIVE READY
+				koristi se kao ACK kada ne postoji saobraćaj u drugom smeru
+				koji bi potvrdio prijem poruke
+			+ 1 REJECTED
+				okvir sa rednim brojem Next je odbijen i očekuje se da se
+				ponovo pošalje
+			+ 2 RECEIVE NOT READY
+				potvrđuju se svi okviri do Next ali se nalaže drugoj strani
+				da prestane da šalje
+			+ 3 SELECTIVE REJECT
+				zahteva se ponovno slanje okvira Next
+
+			Nenumerisani okviri sa koriste za upravljanje ali takođe mogu i
+				da nose podatke, ako je zatražena nepouzdana usluga bez
+				uspostave veze
+
+			Polje Address se koristi na linijama sa više terminala, gde
+				identifikuje jedan od terminala
+
+			Checksum se računa pomoću CRC
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='37'>
+		<naslov>
+			Protokol PPP
+		</naslov>
+		<prez>
+			07/58:65
+		</prez>
+		<book>
+			174:176
+		</book>
+		<laza>
+			Point to Point Protocol je protokol kojim se kućni računari
+				povezuju na internet, priča o LAN-u i gateway ruteru
+			Razlikuje se od HDLC po tome što je bajt-orijentisan ali mu
+				je struktura slična
+			Ovaj protokol obrađuje greške, podržava više protokola i
+				omogućuje dogovaranje IP adresa (ISP - klijent)
+			Obezbeđuje 3 stvari:
+			+ Metodu uokviravanja
+			+ Protokol za upravljanje vezom (LCP), koji se koristi za
+				podizanje linija, testiranje, dogovaranje opcija i njihovo
+				zatvaranje
+			+ Dogovaranje opcija mrežnog sloja nezavisno od njegovog
+				protokola. Ovo je urađeno tako što postoji različiti NCP
+				za svaki podržani mrežni sloj
+			Use case:
+			Najčešće PC želi da izvršava skup protokola TCP/IP i zato
+				traži IP adresu. Protokol NCP prilagođen za IP dodeljuje
+				tu adresu
+			Po završetku rada, NCP prekida vezu u mrežnom sloju i oslobađa
+				IP adresu
+			Zatim LCP prekida vezu u sloju veze podataka
+			Računar nalaže modemu da prekine vezu u fizičkom sloju
+			Format PPP okvira je dizajniran tako da bude što sličniji formatu
+				HDLC okvira. Njegova struktura je sledeća
+			+ 1 bajt 01111110
+			+ 1 bajt za adresu
+			+ 1 kontrolni bajt 
+				Default je 00000011, ovo odgovara nenumerisanom okviru
+				odnosno, PPP ne omogućava pouzdan prenos pomoću rednih
+				brojeva, jer najčešće nije ni potreban. Ova opcija se
+				može uključiti u slučaju mreža sa puno grešaka, npr. bežičnih
+			+ 1/2 bajta Protokol
+			+ 0 ili više Payload
+			+ 2 ili 4 bajta suma provere
+			+ 1 bajt 01111110
+			Koristi se umetanje bajtova
+			Dijagram stanja:
+				Dead - Establish - Authenticate - Network - (NCP conf) -
+				Open - Terminate - Dead
 		</laza>
 	</pitanje>
 
