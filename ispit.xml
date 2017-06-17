@@ -1,0 +1,1049 @@
+<ispit predmet='Računarske Mreže'>
+	<pitanje id='1'>
+		<naslov>
+			Spoj računarske industrije i telekomunikacija
+		</naslov>
+		<prez>
+			01/2:4
+		</prez>
+		<book>
+			8
+		</book>
+		<laza>
+			Računarske mreže se javljaju između 70ih i 80ih godina
+			Spajaju računarske i telekomunikacione tehnologije
+			i dalje traje razvoj računarskih mreža
+
+			Posledice računarsko-komunikacione revolucije:
+			+ Nema suštinske razlike između obrade podataka, koju
+				obavljaju računari i prenosa podataka koji obavlja
+				oprema za komunikaciju i prenos
+			+ Nema suštinske razlike između prenosa različitih tipova
+				podataka
+			+ Razlike između jednoprocesorskih i višeprocesorskih
+				računara i različitih tipova mreža su manje izražene
+
+			Efekti
+			+ Sve veće preklapanje računarske i telekomunikacione
+				industrije
+			+ Razvoj integrisanih sistema za prenos i obradu svih
+				tipova podataka i informacija
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='2'>
+		<naslov>
+			Komunikacioni model
+		</naslov>
+		<prez>
+			01/5:9
+		</prez>
+		<book>
+			8
+		</book>
+		<laza>
+			Izvor - Predajnik - Sistem za prenos - prijemnik - odredište
+			Izvorni sistem su prva dva, odredišni sistem poslednja dva
+
+			Osnovna svrha: razmena podataka između dve strane
+			Primeri:
+			+ veza radne stanice sa serverom putem javne telefonske linije
+			+ razmena zvučnih signala između dva telefona
+
+			Ključni elementi komunikacionog modela su gore navedeni.
+
+			Ključni zadaci sistema za prenos podataka (12) su:
+			+ Iskorišćenost
+			+ Sprega uređaja SZPP
+			+ Mogućnost generisanja signala koji se mogu:
+			+ + Prenositi kroz sistem za prenos
+			+ + Interpretirati u prijemniku
+
+			+ Sinhronizacija predajnika i prijemnika
+			+ Upravljanje razmenom
+			+ Detekcija i korekcija grešaka
+
+			+ Adresiranje
+			+ Usmeravanje
+			+ Mogućnost oporavka
+			+ Formatiranje poruke
+			+ Mere bezbednosti
+			+ Upravljanje mrežom
+		</laza>
+	</pitanje>
+
+	<pitanje id='3'>
+		<naslov>
+			Računarske mreže i distribuirani sistemi
+		</naslov>
+		<prez>
+			01/10:13
+		</prez>
+		<book>
+			8:9
+		</book>
+		<laza>
+			XVIII vek - mehanika
+			XIX vek - parna mašina
+			XX vek - prikupljanje, obrada i distribucija podataka
+			XXI vek - ???
+
+			U početku su računari bili centralizovani
+			Ovaj model je zamenjen modelom gde obradu vrši veći broj
+				zasebnih ali povezanih računara - Računarska mreža
+			Računari su povezani ako razmenjuju podatke
+			Veza se ostvaruje na više načina:
+			+ Bakarnom žicom, optičkim vlaknom
+			+ Mikrotalasima, infrared ili satelitskim signalima
+			Mreže mogu biti raznih veličina i oblika
+			Internet i WWW nisu mreže!
+			+ Internet je mreža koja povezuje druge mreže
+			+ WWW je distribuirani sistem koji se izvršava preko interneta
+			Kod distribuiranog sistema korisnici vide skup nezavisnih
+				računara kao jedinstveni sistem
+			U računarskim mrežama, korisnici su svesni postojanja različitih
+				računara
+			Distribuirani sistem je softverski sistem koji se izvršava u mreži
+			Sličnost sa mrežama: prenose se podaci
+			Razlika je u tome ko pokreće prenos: sistem ili korisnik
+		</laza>
+	</pitanje>
+
+	<pitanje id='4'>
+		<naslov>
+			Poslovne mreže
+		</naslov>
+		<prez>
+			01/15:17
+		</prez>
+		<book>
+			9:11
+		</book>
+		<laza>
+			Dijagram: Server - Mreža - Klijenti
+			Deljenje resursa, gde spadaju podaci, programi, štampači,
+				ostala oprema, spiskovi, računi.
+			Firme mogu napraviti i koristiti virtuelnu privatnu mrežu, čak
+				i kada se svi njeni računari ne nalaze u istoj zgradi, čak
+				ni u istoj državi
+			Komunikacija među zaposlenima:
+			+ Elektronska pošta
+			+ Video konferencije (VoIP)
+			Transakcije sa drugim preduzećima
+			Elektronska trgovina
+			Softver za kontrolu verzija - git
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='5'>
+		<naslov>
+			Kućne mreže
+		</naslov>
+		<komentar>
+			Ovde se misli na primenu računarskih mreža u kućnom okruženju,
+			po analogiji sa prethodnim pitanjem
+		</komentar>
+		<prez>
+			01/18:20
+		</prez>
+		<book>
+			11:13
+		</book>
+		<laza>
+			Pristupanje udaljenim informacijama, preko WWW
+			+ Novine, biblioteke, onlajn enciklopedije
+			Komunikacija između korisnika:
+			+ Čet, društvene mreže, forumi...
+			P2P (peer-to-peer) - komunikacije među ravnopravnim korisnicima
+				decentralizovana mreža tj. bez servera
+				Napster
+			Telefoniranje preko interneta, video pozivi, internet radio
+			Učenje na daljinu
+			Interaktivna zabava - igrice
+			Internet trgovina
+			Mnogo drugih primera...
+		</laza>
+	</pitanje>
+
+	<pitanje id='6'>
+		<naslov>
+			Pokretni korisnici
+		</naslov>
+		<prez>
+			01/21:22
+		</prez>
+		<book>
+			13:15
+		</book>
+		<laza>
+			Prenosivi uređaji i Personalni Digitalni Asistenti
+			Pristup mreži u hotelima, kolima...
+			Bežične mreže i bežično umrežavanje - srodan pojam
+				pojmu prenosivih uređaja ali ne i sasvim isti
+			Primeri kombinacija bežičnih i pokretnih korisnika:
+			B P Primena
+			0 0 Stoni računari u kancelarijama
+			0 1 Prenosivi računar u hotelskoj sobi
+			1 0 Mreže u starim zgradama bez instalacija
+			1 1 Pokretna kancelarija, LDA za inventarisanje skladišta
+				mobilni telefoni...
+		</laza>
+	</pitanje>
+
+	<pitanje id='7'>
+		<naslov>
+			Društveni aspekti upotrebe računarskih mreža
+		</naslov>
+		<prez>
+			01/23
+		</prez>
+		<book>
+			15:17
+		</book>
+		<laza>
+			Mreže donose nove društvene, etičke i političke probleme
+			Neprihvatljivi sadržaji u diskusionim grupama
+			Poslodavci teže cenzuri elektronske pošte na poslu
+			Država teži cenzuri, FBI nakon 9/11
+			Nepouzdane informacije na internetu, teorije zavere
+			Spam
+			Ugrožena bezbednost
+		</laza>
+	</pitanje>
+
+	<pitanje id='8'>
+		<naslov>
+			Klasifikacija računarskih mreža na osnovu tehnologije prenosa
+		</naslov>
+		<prez>
+			02/3
+		</prez>
+		<book>
+			17
+		</book>
+		<laza>
+			Veze sa neusmerenim (difuznim) emitovanjem (broadcasting)
+			+ Deli se jedinstveni kanal kojim putuju paketi
+			+ Ponekad se usmerenje vrši ka grupi računara (multicasting)
+			+ Karakteristično za geografski manje mreže
+			Veze od tačke do tačke (point-to-point)
+			+ Veza između izvora i odredišta (moguće preko više čvorova)
+			+ Koristi se za geografski veće mreže
+			+ Zove se i jednosmerno emitovanje (unicasting)
+		</laza>
+	</pitanje>
+
+	<pitanje id='9'>
+		<naslov>
+			 Lokalne mreže
+		</naslov>
+		<prez>
+			02/5:10
+		</prez>
+		<book>
+			18:19
+		</book>
+		<laza>
+			LAN. Privatne mreže unutar jedne zgrade ili jednog organizacionog
+				područja, npr. univerzitetskog kampusa
+			Koriste se za povezivanje ličnih računara i radnih stanica u
+				kancelarijama i pogonima firmi radi zajedničkog korišćenja
+				resursa i razmene informacija
+			Razlikuju se od ostalih mreža po veličini, tehnologiji prenosa
+				podataka i topologiji
+			Veličina im je ograničena - vreme prenosa ograničeno i poznato
+			Prenos pomoću kabla brzinom 10-10000 Mb/s
+			Za LAN se neusmerenim emitovanjem, topologije mogu biti u obliku
+			+ Magistrale (bus)
+			+ Prstena (ring)
+			Primer magistrale - IEEE 802.3 poznat i kao Ethernet
+			+ Neusmereno emitovanje
+			+ Decentralizovano upravljanje
+			Primer prstena - IEEE 802.5 - token-ring mreža
+			Mreže za neusmereno emitovanje se mogu podeliti na osnovu načina
+				alokacije kanala na:
+			+ Statičke
+			+ Dinamičke: centralizovane i decentralizovane, u zavisnosti od
+				toga na koji način se vrši dinamička dodela
+		</laza>
+	</pitanje>
+
+	<pitanje id='10'>
+		<naslov>
+			Gradske mreže
+		</naslov>
+		<prez>
+			02/11:12
+		</prez>
+		<book>
+			19:20
+		</book>
+		<laza>
+			MAN - Metropolitan Area Network
+			Primer: Kablovska TV se od početka 90ih koristi i za internet
+			Kablovski operateri su shvatili da svoju infrastrukturu mogu,
+				uz manje izmene, da koriste i za u uslugu povezivanja na
+				Internet, tako što bi koristili slobodan deo spektra
+		</laza>
+	</pitanje>
+
+	<pitanje id='11'>
+		<naslov>
+			Regionalne mreže
+		</naslov>
+		<prez>
+			02/13:17
+		</prez>
+		<book>
+			20:21
+		</book>
+		<laza>
+			WAN - Wide Area Network
+			Pokriva veliko geografsko područje, državu ili kontinent
+			Umreženi računari su povezani komunikacionom podmrežom
+			Obično se sastoji od: Linija prenosa, optičkog vlakna ili 
+				radio veza
+			Prekidačkih elemenata - usmerivača (router)
+			Ako dva usmerivača nisu direktno povezana, veza se ostvaruje
+				preko drugih usmerivača
+			Većina podmreža radi na principu "čuvaj i prosledi" ili na
+				komutiranju paketa (commute u smislu putovanja)
+			Odluke o izboru putanje se zasnivaju na algoritmu za usmeravanje
+			Satelitske mreže ne rade sa komutiranjem paketa
+		</laza>
+	</pitanje>
+
+	<pitanje id='12'>
+		<naslov>
+			Bežične mreže
+		</naslov>
+		<prez>
+			02/17:20
+		</prez>
+		<book>
+			21:23
+		</book>
+		<laza>
+			Začetak sa pojavom Morzeove azbuke
+			Tri kategorije:
+			+ Mreže za povezivanje sistema:
+				Bluetooth miševi, tastature, audio oprema i sl.
+			+ Bežične lokalne mreže, IEEE 802.11
+			+ Bežične regionalne mreže, mobilna telefonija
+			Radiotalasna mreža mobilne telefonije je bežični sistem
+				niske propusne moći
+			Bežične regionalne mreže visoke propusne moći
+			+ Local multipoint distribution service, LMDS, IEEE 802.16
+			Bežične mreže se obično u nekoj tački povezuju sa klasičnom
+				žičanom mrežom radi pristupa internetu
+		</laza>
+	</pitanje>
+
+	<pitanje id='13'>
+		<naslov>
+			Kućne mreže
+		</naslov>
+		<komentar>
+			Ovde se misli na tehnologije povezivanja kućnih uređaja
+				i karakteristike takve mreže
+		</komentar>
+		<prez>
+			02/21
+		</prez>
+		<book>
+			23:24
+		</book>
+		<laza>
+			Povezivanje kućnih aparata na mrežu
+			Karakteristike (6):
+			+ Laka instalacija
+			+ Niske cene
+			+ Jednostavno upravljanje radom mreže
+			+ Visoka propusna moć
+			+ Inkrementalni rast - lako dodavanje novih uređaja po potrebi
+			+ Bezbednost - ne želimo da nam neko deaktivira kučni alarm!
+		</laza>
+	</pitanje>
+
+	<pitanje id='14'>
+		<naslov>
+			Kombinovane mreže
+		</naslov>
+		<prez>
+			02/22
+		</prez>
+		<book>
+			24:25
+		</book>
+		<laza>
+			Međumreže. Različite mreže se kombinuju pomoću mrežnih prolaza
+				tj. gateway
+			Internet je jedna posebna međumreža
+			WAN povezuje više LAN-ova
+			Razlikujemo pojmove mreže, podmreže i međumreže
+			+ Primer mreže je LAN
+			+ Primer podmreže (subnet) je telefonska infrastrktura, sve osim
+				samih telefona
+			+ Najčešće ako se neka mreža sastoji od delova koji pripadaju
+				različitim kompanijama ili koriste različitu tehnologiju,
+				npr. LAN vs WAN, onda govorimo o međumreži
+		</laza>
+	</pitanje>
+
+	<pitanje id='15'>
+		<naslov>
+			Hijerarhije protokola
+		</naslov>
+		<prez>
+			03/2:6
+		</prez>
+		<book>
+			25:28
+		</book>
+		<laza>
+			Radi jednostavnijeg projektovanja, računarske mreže se organizuju
+				kao skup slojeva ili nivoa
+			Broj slojeva, nazivi slojeva, sadržaj i funkcija variraju
+			Svaki sloj nudi usluge sloju iznad njega
+			Sloj n na jednom računaru komunicira sa slojem n na drugom
+			Pravila i konvencije te komunikacije nazivaju se protokoli
+			Skup slojeva i protokola naziva se arhitektura računarske mreže
+			Skup protokola je lista protokola koje koristi određeni sistem
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='16'>
+		<naslov>
+			Problematika projektovanja slojeva
+		</naslov>
+		<prez>
+			03/7
+		</prez>
+		<book>
+			28:29
+		</book>
+		<laza>
+			Adresiranje
+			Pravila prenosa podataka, smer prenosa, broj logičkih kanala
+				Mnoge mreže mude barem dva logička kanala, za normalne
+				podatke i urgentne podatke
+			Kontrola grešaka - detekcija i korekcija
+			Kontrola toka - usaglašavanje brzine slanja i primanja podataka,
+				rastavljanje i sastavljanje poruke, multipleksiranje,
+				usmeravanje
+		</laza>
+	</pitanje>
+
+	<pitanje id='17'>
+		<naslov>
+			Usluge sa uspostavljanjem direktne veze i bez nje
+		</naslov>
+		<prez>
+			03/8:10
+		</prez>
+		<book>
+			29:31
+		</book>
+		<laza>
+			Usluga SUDV podseća na telefonski sistem, dok BUDV podseća
+				na poštanski sistem
+			Usluga se može opisati njenim kvalitetom
+			+ Pouzdane (postoji potvrda o prijemu, file transfer)
+			+ Nepouzdane (ne postoji, prenos glasa)
+			Usluga datagrama je nepouzdana usluga BUDV
+			Ponekad se koristi i usluga datagrama sa potvrdom o prijemu
+			Postoji i usluga odgovaranja na zahteve
+
+			Primeri:
+			Pouzdan tok poruka  , Niz stranica
+			Pouzdan tok bajtova , Udaljeni login
+			Nepouzdana veza     , Digitalizovani glas
+			Nepouzdani datagram , Spam
+			Datagram sa potvrdom, Registrovan email
+			Zahtev-odgovor      , Upit u bazu podataka  
+		</laza>
+	</pitanje>
+
+	<pitanje id='18'>
+		<naslov>
+			Osnovne operacije za definisanje usluge
+		</naslov>
+		<prez>
+			03/11:13
+		</prez>
+		<book>
+			31:32
+		</book>
+		<laza>
+			Usluge se zadaju skupom osnovnih operacija (primitiva)
+			Primitive najčešće predstavljaju sistemske pozive
+
+			LISTEN    , blokiraj se čekajući dolazeću vezu
+			CONNECT   , uspostavi vezu sa drugom stranom koja čeka
+			RECEIVE   , čekaj dolazeću poruku
+			SEND      , pošalji poruku drugoj strani
+			DISCONNECT, obustavi vezu
+
+			Dijagram koji opisuje uspostavu veze, zahtev, odgovor i
+			obustavu veze kod klijent-server interakcije
+		</laza>
+	</pitanje>
+
+	<pitanje id='19'>
+		<naslov>
+			Odnos između usluga i protokola
+		</naslov>
+		<prez>
+			03/14:16
+		</prez>
+		<book>
+			32:33
+		</book>
+		<laza>
+			Usluge i protokoli su različiti pojmovi ali se delimično
+				preklapaju
+			Usluga (service) je skup osnovnih operacija koje sloj
+				obezbeđuje sloju iznad sebe
+			Protokol je skup pravila o formatu i značenju paketa ili
+				poruka koje se razmenjuju između procesa istog sloja
+			Dijagram
+			Postoji analogija sa programskim jezicima
+			+ Usluga je slična apstraktnom tipu podataka jer definiše
+				koje se operacije mogu izvesti ali ne i kako su one
+				realizovane
+			+ Protokole se odnosi na implementaciju pomenutih usluga
+		</laza>
+	</pitanje>
+
+	<pitanje id='20'>
+		<naslov>
+			Referentni model OSI
+		</naslov>
+		<prez>
+			04/2:7
+		</prez>
+		<book>
+			34:36
+		</book>
+		<laza>
+			ISO OSI - International Standard Organization - Open
+				Systems Interconnection
+			Ovaj model je predložila ISO kao prvi korak standardizaciji
+			Ime je dobio po tome što je predviđen za komunikaciju otvorenih
+				sistema odnosno sistema koji su dostupni za komunikaciju
+				sa drugim sistemima
+			Sastoji se od sedam slojeva
+			Principi koji su doveli do ovog skupa slojeva su (5):
+			+ Treba napraviti novi sloj kad god je neophodna nova apstrakcija
+			+ Svaki sloj treba da ima jasno definisanu funkciju
+			+ Funkciju svakog sloja treba izabrati u skladu sa definicijama
+				međunarodno standardizovanih protokola
+			+ Granice slojeva izabrati tako da se minimizuje protok
+				informacija između slojeva
+			+ Broj slojeva treba da bude dovoljno veliki da se funkcije čije
+				su namene jasno različite ne bi stavljale u isti sloj, i da
+				bude dovoljno mali da arhitektura ne bi bila previše složena
+			OSI nije arhitektura mreže jer se ne zadaju konkretne usluge i
+				protokoli za svaki sloj, naime, postoje standardi za sve
+				slojeve ali oni nisu deo ovog modela
+			Navedeni su slojevi i jedinica podataka koju razmenjuju protokoli
+				u tom sloju
+
+			Sloj aplikacije    , APDU
+			Sloj prezentacije  , PPDU
+			Sloj sesije        , SPDU
+			Transportni sloj   , TPDU
+			Mrežni sloj        , Packet
+			Sloj veze podataka , Frame
+			Fizički sloj       , Bit
+
+			Poslednja tri sloja pripadaju protokolu podmreže
+			MAC je podsloj sloja veze podataka koji se koristi kod mreža sa
+				deljenim kanalom
+		</laza>
+	</pitanje>
+
+	<pitanje id='21'>
+		<naslov>
+			Referentni model TCP/IP
+		</naslov>
+		<prez>
+			04/8:14
+		</prez>
+		<book>
+			36:38
+		</book>
+		<laza>
+			Korišćen je u prvoj mreži ARPANET i koristi se na internetu
+			Ime dobio prema svoja dva osnovna protokola
+			ARPANET je projekat Ministarstva odbrane SAD, postojala je
+				potreba da komunikaciona mreža opstane čak i ako se neke
+				veze prekinu ili neki računari budu uništeni
+			Sastoji se iz četiri sloja:
+
+			Sloj aplikacije, tipični protokoli su TELNET, FTP, SMTP, DNS
+			Transportni sloj, protokoli su TCP i UDP
+			Internet sloj, internet protokol tj IP
+			Sloj povezivanja na mrežu, fizički sloj + sloj veze podataka
+				ARPANET, SATNET, Packet radio, LAN
+
+			Internet tj. međumrežni sloj je projektovan kao mreža sa
+				komutiranjem paketa, bez direktnog uspostavljanja veze,
+				definiše format paketa i internet protokol IP
+			Transportni sloj definiše dva protokola TCP - Transmission
+				Control Protocol iliti protokol za upravljanje prenosom i
+				UDP - User Datagram Protocol iliti protokol za korisničke
+				datagrame
+			Sloj aplikacija sadrži protokole višeg nivoa
+			Sloj za povezivanje računara sa mrežom - model ne precizira
+				šta se ovde događa, već samo to da se računar mora povezati
+				sa mrežom
+		</laza>
+	</pitanje>
+
+	<pitanje id='22'>
+		<naslov>
+			Poređenje referentnih modela OSI i TCP/IP
+		</naslov>
+		<prez>
+			04/15:18
+		</prez>
+		<book>
+			38:39
+		</book>
+		<laza>
+			Zajedničko:
+			+ Zasnovani su na konceptu skupa nezavisnih protokola
+			+ Funkcionalnost slojeva je slična
+			Kod modela OSI postoje tri ključna koncepta:
+				Usluge, interfejsi, protokoli
+			Model TCP/IP u početku nije povukao jasnu razliku između
+				ova tri koncepta
+			OSI bolje skriva protokole
+			OSI je osmišljen pre protokola pa je opštiji, ovo mu je ujedno
+				i mana jer je osmišljen pre nego što je postojalo neko
+				iskustvo
+			TCP/IP se pojavio posle protokola pa se, naravno, protokoli
+				savršeno uklapaju u model. Nedostatak je što se model
+				ne uklapa ni u jedan drugi skup protokola
+			Razlika je u broju slojeva i u načinu uspostave veze
+		</laza>
+	</pitanje>
+
+	<pitanje id='23'>
+		<naslov>
+			Kritika modela OSI i njegovih protokola
+		</naslov>
+		<prez>
+			04/19:22
+		</prez>
+		<book>
+			39:41
+		</book>
+		<laza>
+			Četiri stavke:
+			Loš tajming - po teoriji Dejvida Klarka sa MIT-a, kada
+				se neki subjekat otkrije, postoji pik aktivnosti, zatim
+				zatišje, a zatim počinje period investicija, kada
+				aktivnost ponovo dostigne pik. Standarde treba napisati
+				između ova dva pika u zatišju. Ako se standardi napišu
+				prerano, moguće je da neka kasnija istraživanja pokažu
+				da je, tada već napisani standard loš. Ako se standard
+				napiše prekasno kada već počnu investicije, može se desiti
+				da svaka kompanija sama pravi svoj standard i onda imamo
+				situaciju da paralelno postoji nekoliko, često nekompati-
+				bilnih standarda
+			Loša tehnologija - izbor 7 slojeva je više političke prirode
+				jer su prezentacioni i sloj sesija praktično prazni tj.
+				nekorišćeni dok su slojevi veze podataka i mrežni prepuni,
+				misli se na obim funkcija koje obavljaju. Takođe, ovaj
+				model je jako složen, a neke funkcije se ponavljaju u par
+				slojeva
+			Loša realizacija - složenost modela i protokola izaziva da je
+				implementacija glomazna i spora, nasuprot tome TCP/IP je
+				bio deo Berkeley UNIX-a, dobar i besplatan
+			Loša politika - za OSI se smatralo da je kreiran od strane
+				birokrata iz raznih evropsnih ministarstava za
+				telekomunikacije, Evropske zajednice (Unije) i vlade SAD,
+				dok je TCP/IP bio deo UNIX-a
+		</laza>
+	</pitanje>
+
+	<pitanje id='24'>
+		<naslov>
+			Kritika referentnog modela TCP/IP
+		</naslov>
+		<prez>
+			04/23:24
+		</prez>
+		<book>
+			41:42
+		</book>
+		<laza>
+			Problemi
+			+ Ne razgraničava jasno koncepte usluge, interfejsa i protokola.
+				Traljavo razlikovanje specifikacije i realizacije
+			+ Model nije uopšten i ne može se koristiti ni za jedan drugi
+				stek protokola
+			+ Sloj za povezivanje računara sa mrežom je pre interfejs nego
+				sloj
+			+ Ne razdvaja sloj veze podataka i fizički sloj
+			+ Mnogi protokoli osim IP i TCP rađeni su na brzinu
+
+			Model OSI bez slojeva sesije i prezentacije je koristan za
+				izučavanje mreža no njegovi protokoli se i ne koriste
+			Model TCP/IP praktično i ne postoji ali se njegovi protokoli
+				masivno koriste
+			Koristićemo hibridni model od 5 slojeva - OSI bez sloja sesije
+				i prezentacije
+		</laza>
+	</pitanje>
+
+	<pitanje id='25'>
+		<naslov>
+			ARPANET
+		</naslov>
+		<prez>
+			05/2:16
+		</prez>
+		<book>
+			42:45
+		</book>
+		<laza>
+			Internet je danas najinteresantniji proizvod evolucije računarskih
+				mreža. Naime, ne radi se o jednoj mreži, već o skupu
+				različitih mreža u kojima se koriste zajednički protokoli i
+				obezbeđuju zajedničke usluge
+			Preteča Interneta je ARPANET.
+
+			Istorija ARPANET-a
+
+			Krajem 50. godina XX veka DoD US je bila potrebna komandno-
+				-kontrolna mreža koja bi mogla da izdrži nuklearni udar
+			U to vreme je korišćen javni telefonski sistem koji je bio ranjiv
+				zbog svoje topologije stabla
+			Oko 1960. zatraženo je od korporacije RAND da pronađe rešenje
+			Pol Baran je predložio distribuiranu mrežu sa komutiranjem paketa
+			DoD je zadužio ATnT da izgradi prototip ali oni su to odbili da
+				urade jer nisu hteli da uvaže Baranovu ideju
+			Formirana je agencija ARPA (Advanced Research Project Agency) koja
+				oko 1967 počinje rad na umrežavanju.
+			Njen direktor Leri Roberts usmerava ARPA da radi na umrežavanju.
+			On se upoznao sa sličnim projektom u Engleskoj koji je citirao
+				Baranov rad, što je dovelo do nastanka ARPANET-a
+
+			Tehnička realizacija
+
+			ARPA je odabrala konsultantsku firmu BBN iz Kembridža, Masačusets
+				da realizuje podmrežu
+			Podmreža se sastojala od miniračunara - IMP (Interface Message
+				Processor), koji su bili povezani linijama brzine 56kbps
+			Svaki IMP je bio povezan sa bar još druga dva
+			Podmreža je datagramska
+			Čvor mreže se sastojao od IMP i umreženog računara
+			Računar šalje poruke IMP-u, dužine maks 8063 bita a on ih deli
+				na pakete od 1008 bitova.
+			Ulogu IMP su činili računari Honeywell DDP-316 sa memorijom od
+				12 kB i 16-bitnim rečima, i nisu imali diskove jer je smatrano
+				da su mehanički delovi nepouzdani
+			Softver je podeljen na dve celine, za podmrežu i (krajnje) računare
+			Softver za podmrežu je izvršavao protokol za vezu dva uzastopna
+				IMP, ali i za vezu između izvornog i odredišnog IMP-a radi
+				veće pouzdanosti, kao i softver za vezu host-IMP
+			Softver van podmreže je izvršavao hostovski kraj veze host-IMP,
+				zatim protokol za vezu između računara i aplikacioni softver
+			Nakon što je uspeo prenos poruka, BBN je smatrala posao završenim,
+				pa se javio nedostatak softvera
+			Eksperimentalna mreža puštena je u rad 1969 i imala je 4 čvora,
+				nakon čega je neprestano rasla
+			ARPA je takođe istraživala upotrebu satelitskih mreža za mobilni
+				paketni radio (Eksperiment sa kamionom koji vozi po Kaliforniji
+				a poruke stižu do Londona preko ARPANET-a i satelitskih veza)
+			Nastavljen je rad na protokolima što je dovelo do stvaranja
+				modela TCP/IP (1974) i njegovih protokola.
+			Pojava Socketa, LAN-a i DNS-a (1980e)
+		</laza>
+	</pitanje>
+
+	<pitanje id='26'>
+		<naslov>
+			NSFNET
+		</naslov>
+		<prez>
+			05/17:19
+		</prez>
+		<book>
+			45:47
+		</book>
+		<laza>
+			Krajem 70ih, NSF (National Science Foundation) uočava značaj
+				mreža i projektuje naslednika ARPANET-a
+			Izrađena je okosnica (backbone) sa 6 centara, gde je svakom
+				superračunaru dodat mikroračunar LSI-11
+			Brzina prenosa je u početku bila 56kbps koja je kasnije bila
+				povećana jer se prešlo na korišćenje optičkij vlakana
+			Izgrađeno je dvadesetak regionalnih mreža, povezanih na NSFNET
+			ANS (Advanced Networks and Services) je preuzeo NSFNET, povećao
+				brzinu do 45 Mbps (ANSNET), a zatim je ova mreža prodata
+				kompaniji America Online (AOL)
+		</laza>
+	</pitanje>
+
+	<pitanje id='27'>
+		<naslov>
+			Teorijske osnove prenosa podataka
+		</naslov>
+		<prez>
+			06/2:17
+		</prez>
+		<book>
+			66:69
+		</book>
+		<laza>
+			Jedan od načina za prenos podataka je bakarnom žicom, menjajući
+				njena električna svojstva - napon ili struju
+			Ako promene vrednosti napona ili struje predstavimo funkcijom
+				od vremena f(t), onda možemo vršiti modeliranje signala i
+				njegovu analizu.
+			Furijeova analiza
+			Osnovna teorema:
+			Neka je g(t) funkcija sa periodom T odnosno frekvencijom f=1/T.
+			Bez ulaženja u matematičke detalje, zahteva sa da funkcija bude
+				integrabilna. Svakako, funkcije fizičkih veličina spadaju
+				u ovaj skup.
+			Važi:
+
+			g(t) = c/2 + Series[a_n sin(2 pi n f t)] +
+				Series[b_n cos(2 pi n f t)]
+			Gde je:
+			
+			a_n = 2/T Int[g(t) sin (2 pi n f t) dt, [0, T]]
+			b_n = 2/T Int[g(t) cos (2 pi n f t) dt, [0, T]]
+			c   = 2/T Int[g(t) dt, [0, T]]
+
+			Različite komponente u Furijeovom razvoju različito slabe, što
+				ima za posledicu izobličenje signala.
+			Za neki kanal, amplitude signala se prenose bez slabljenja od
+				frekvencije 0 do neke granične frekvencije fc
+			Ovaj opseg naziva se propusni opseg tj. bandwidth
+			Kako zavisnost slabljenja od frekvencije nije "oštra" funkcija,
+				več neprekidna, za graničnu frekvenciju se uzima ona pri
+				kojoj snaga signala opadne na 0.5
+			Propusni opseg je fizičko svojstvo transportnog medijuma
+			Ponekad se ovaj opseg ograničava upotrebom filtera.
+				Moguće je ograničiti ovaj opseg i sa donje strane, tako
+				da donja granica ne bude 0 Hz
+			Zavisnost brzine prenosa, propusnog opsega i broja harmonika.
+				Ovde se za osnovnu frekvenciju uzima vreme da se prenese
+				jedan bajt
+			Primer: Ako je fc = 3000 Hz, želimo da pošaljemo signal sa prvih
+				10 harmonika, prvi harmonik će imati frekvenciju 300 Hz i
+				možemo prenositi 300 * 8 = 2400 bitova u sekundi.
+
+			Ograničenja:
+
+			Henri Nikvist je 1924. otkrio da i savršeni kanal ima ograničeni
+				kapacitet prenosa, a Kold Šenon je 1948. proširio Nikvistovu
+				jednačinu na kanale sa termičkim šumom.
+
+			Nikvistova teorema glasi: ako se proizvoljni signal prenosi kroz
+				filter propusnog opsega H (bez slabljenja do H, nakon H
+				apsolutno slabljenje), data se filtrirani signal može
+				rekonstruisati ako se uzorkuje brzinom 2H uzoraka u sekundi
+			Ako u sistemu ima V diskretnih nivoa, onda je najveća brzina
+				prenosa u bitovima po sekundi 2H log2 V
+			Definicija decibela
+			Šenonova jednačina: H log2(1 + S/N)
+			Vrednost S/N (signal to noise ratio) se navodi u decibelima
+				30 dB = 1000
+		</laza>
+	</pitanje>
+
+	<pitanje id='28'>
+		<naslov>
+			Fizički medijumi za prenos podataka
+		</naslov>
+		<prez>
+			06/18:22
+		</prez>
+		<book>
+			70:73
+		</book>
+		<laza>
+			Magnetni medijumi - nisu svojstveni računarskim mrežama
+				ali ne treba ih zanemariti kao medijum za prenos podataka
+			
+			Upredena parica (Twisted pair)
+			+ Dve izolovane bakarne žice, umotane - razlog je što se
+				dve paralelne bakarne žice ponašaju kao veoma efikasna
+				antena
+			+ 3. kategorija - 16 MHz
+			+ 5. kategorija - 100 MHz - 1988
+			+ 6. kategorija - 250 MHz
+			+ 7. kategorija - 600 MHz
+			+ Sve ove kategorije spadaju u unshielded twistet pair - UTP
+			
+			Koaksijalni kabl
+			+ Bakarno jezgro, izolator, cilindrična bakarna mrežica,
+				spoljni izolator
+			+ Koristi se kabl impedanse 50 Oma za digitalni prenos
+			+ 70 Oma za analogne podatke, kablovsku TV i kablovski internet
+
+			Optičko vlakno
+			+ Sastoji se od svetlosnog izvora, prenosnog medijuma i
+				detektora
+			+ Svetlosni impuls kodira bit 1, njegovo odsustvo bit 0
+			+ Totalno unutrašnje prelamanje omogućava da svetlosni signal
+				putuje u vlaknu bez prelamanja
+			+ Kroz vlakno se istovremeno može prostirati veći broj talasa
+				sa različitim uglovima prelamanja - višerežimsko vlakno
+			+ Ako je vlakno debljine svega nekoliko talasnih dužina onda
+				se ono ponaša kao talasovod, ona su skuplja ali se koriste
+				za veće razdaljine - bez slabljenja do 100 Km brzinom
+				od 50 Gbit/s
+		</laza>
+	</pitanje>
+
+	<pitanje id='29'>
+		<naslov>
+			Bežični prenos podataka
+		</naslov>
+		<prez>
+			06/23:26
+		</prez>
+		<book>
+			76:78
+		</book>
+		<laza>
+			Neki autori smatraju da će se u budućnosti veze ostvarivati
+				optičkim vlaknom ili bežično
+			EM talase je predvideo Maksvel 1856. a dokazao Herc 1887.
+			Elementi sistema za bežični prenos podataka su električno kolo
+				na predajniku, antena, prostor, prijemnik (antena i kolo)
+			Brzina EM talasa u vakuumu je oko 3e8 mps, u vazduhu skoro isto
+				ovoliko, a u bakru ili optičkom vlaknu brzina prostiranja
+				je oko 2/3 ove vrednosti
+			Odnos između frekvencije, talasne dužine i brzine svetlosti u
+				nekoj sredini je Lf = c
+			EM spektar
+			Veza između širine talasnog opsega i frekventnog opsega je
+			df = c dL / L^2
+		</laza>
+	</pitanje>
+
+	<pitanje id='30'>
+		<naslov>
+			Projektovanje sloja veza podataka
+		</naslov>
+		<prez>
+			07/2:5
+		</prez>
+		<book>
+			135
+		</book>
+		<laza>
+			Susedni računari su oni koji su međusobno povezani komunikacionim
+				kanalom koji se ponaša kao žica, što znači da ubrajamo i
+				bežičnu vezu od tačke do tačke. Za ovakav kanal važi da
+				će bitovi biti isporučeni onim redosledom kojim su poslati
+			Funkcije sloja veze podataka ostvaruju se kroz:
+			+ Dobro definisan interfejs ka mrežnom sloju
+			+ Obradi grešaka pri prenosu
+			+ Upravljanje tokom podataka, tako da brži računar ne može da
+				preplavi sporiji računar
+			Sloj veze podataka preuzima pakete koje dobija od mrežnog sloja
+				i inkapsulira ih u okvire (frames) pogodne za transport
+			Okvir se sastoji od zaglavlja, polja za korisničke podatke
+				(payload) i završnog bloka (trailer)
+			Najvažniji posao sloja veze podataka je upravo rad sa okvirima
+		</laza>
+	</pitanje>
+
+	<pitanje id='31'>
+		<naslov>
+			Usluge koje se obezbeđuju za mrežni sloj
+		</naslov>
+		<prez>
+			07/6:9
+		</prez>
+		<book>
+			136:137
+		</book>
+		<laza>
+			Osnovna usluga je prenos podataka sa mrežnog sloja
+				izvorišnog računara na mrežni sloj odredišnog računara
+			Dijagram virtuelnog i stvarnog puta podataka
+			Obično postoje sledeće usluge (3):
+			+ Prenos podataka bez uspostavljanja direktne veze i bez
+				potvrde o njihovom prijemu
+			+ Prenos podataka bez uspostavljanja direktne veze ali sa
+				potvrdom o njihovom prijemu
+			+ Prenos podataka sa uspostavljanjem direktne veze i sa
+				potvrdom o njihovom prijemu
+			Primer: dijagram koji prikazuje dva susedna rutera i odnos
+				između mrežnog sloja i sloja veze podataka
+		</laza>
+	</pitanje>
+
+	<pitanje id='32'>
+		<naslov>
+			Uokviravanje
+		</naslov>
+		<prez>
+			07/10:18
+		</prez>
+		<book>
+			137:140
+		</book>
+		<laza>
+			Sloj veze podataka pruža usluge mrežnom sloju a koristi usluge
+				fizičkog sloja
+			Fizički sloj prihvata i isporučuje tok podataka ne garantujući
+				ispravnost
+			Zadatak sloja veze je da otkrije greške i po mogućstvu ih ispravi
+			On deli podatke u okvire neke konkretne veličine i računa sumu
+				provere (checksum)
+			Postoje sledeće metode uokviravanja:
+			+ Prebrojavanje znakova
+				Ne koristi se jer ako se pogrešno prenese polje koje broji
+				znakove, posledica je da neće moći da se nađe početak sledećeg
+				frejma, čak i ako se koristi suma provere
+			+ Korišćenje indikatorskog bajta (byte stuffing)
+				FLAG i ESC bajt. Problem je što neke mreže nisu orijentisane
+				ka prenosu 8-bitovskih jedinica (npr. UNICODE ima 16)
+			+ Umetanje bitova
+				Frejm počinje i završava se sa nizom 01111110, a u podacima
+				se svaki put kada se naiđe na 5 uzastopnih jedinica, umetne
+				jedna nula
+			U nekim lokalnim mrežama se jedan bit podataka kodira preko dva
+				fizička bita: 1 se predstavlja sa 10 a 0 sa 01. Ovo olakšava
+				nalaženje granice bitova. Kod nekih protokola se 00 ili 11
+				koriste za razgraničenje susednih okvira
+			Moguće je i kombinovanje prebrojavanja znakova sa nekom drugom
+				metodom
+		</laza>
+	</pitanje>
+
+</ispit>
+
+<!--
+
+	<pitanje id='0'>
+		<naslov>
+
+		</naslov>
+		<prez>
+
+		</prez>
+		<book>
+
+		</book>
+		<laza>
+
+		</laza>
+	</pitanje>
+
+-->
