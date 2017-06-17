@@ -1027,6 +1027,44 @@
 		</laza>
 	</pitanje>
 
+	<pitanje id='33'>
+		<naslov>
+			Kontrola grešaka i upravljanje tokom kod mrežnog sloja
+		</naslov>
+		<prez>
+			07/19:22
+		</prez>
+		<book>
+			140:141
+		</book>
+		<laza>
+			Kako da budemo sigurni da su svi okviri isporučeni mrežnom sloju
+				primaoca i to ispravnim redosledom?
+			Pouzdanost isporuke se obezbeđuje tako što pošiljalac vraća vraća
+				upravljačke okvire sa potvrdom
+			Tajmeri se uvode za slučaj da se okvir potpuno izgubi.
+			Da se ne bi	više puta primio isti okvir koriste se redni brojevi
+			Postoje dve strategije upravljanja tokom (brzina slanja):
+			+ Na osnovu povratnih informacija (ovaj se najčešće koristi u DLL)
+			+ Na osnovu ograničenja brzine
+		</laza>
+	</pitanje>
+
+	<pitanje id='34'>
+		<naslov>
+
+		</naslov>
+		<prez>
+
+		</prez>
+		<book>
+
+		</book>
+		<laza>
+
+		</laza>
+	</pitanje>
+
 </ispit>
 
 <!--
