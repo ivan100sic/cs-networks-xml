@@ -1296,6 +1296,335 @@
 		</laza>
 	</pitanje>
 
+	<pitanje id='38'>
+		<naslov>
+			Podsloj za upravljanje pristupom medijumima
+		</naslov>
+		<prez>
+			08/2:3
+		</prez>
+		<book>
+			181
+		</book>
+		<laza>
+			Mreže se mogu podeliti na:
+			+ Od tačke dod tačke
+			+ Sa neusmerenim emitovanjem
+				Ovde je problem odrediti ko će koristiti kanal
+			Kanali za neusmereno emitovanje nazivaju se kanali za
+				višekorisnički pristup (multiaccess channels) ili kanali
+				za slučajan pristup (random access channels)
+			Protokoli kojima se određuje sledeći korisnik kanala pripadaju
+				podsloju sloja veze za upravljanje pristupom medijumima
+				(Medium Access Control)
+			Ovaj podsloj je posebno važan za LAN a koristi se i u mobilnoj
+				telefoniji
+			U regionalnim mrežama koriste se veze od tačke do tačke
+		</laza>
+	</pitanje>
+
+	<pitanje id='39'>
+		<naslov>
+			Statičko dodeljivanje kanala
+		</naslov>
+		<prez>
+			08/4:7
+		</prez>
+		<book>
+			181:182
+		</book>
+		<laza>
+			Klasičan način dodeljivanja jedinstvenog kanala je
+				multipleksiranje podelom frekvencija
+			Kada je broj pošiljalaca veliki i stalno se menja ova
+				tehnika ne zadovoljava
+			Neka je kanal brzine C b/s, brzina pristizanja je L okvira
+				u sekundi a dužine okvira slede eksponencijalnu funkciju
+				gustine verovatnoće sa srednjom vrednošću 1/m bitova
+				po okviru
+			Brzina opsluživanja je mC okvira u sekundi
+			Može se pokazati da za pristizanje i opsluživanje okvira po
+				Poissonovom zakonu važi 1/(mC - L)
+			Ako se kanal podeli na N nezavisnih podkanala kašnjenje je N
+				puta veće
+			Sve što važi za FDM važi i za multipleksiranje podelom vremena
+		</laza>
+	</pitanje>
+
+	<pitanje id='40'>
+		<naslov>
+			Dinamičko dodeljivanje kanala
+		</naslov>
+		<prez>
+			08/8:12
+		</prez>
+		<book>
+			182:183
+		</book>
+		<laza>
+			Prvo ćemo formulisati problem, iz sledeće pretpostavke:
+			+ 1) Model stanica: N nezavisnih stanica (terminala), gde je
+				verovatnoća generisanja okvira u vremenu dt jednaka L dt,
+				a stanica koja generiše okvir se blokira dok ga ne pošalje
+			+ 2) Pretpostavka o jedinstvenom kanalu - sve stanice koriste
+				jedan kanal sa mogućom dodelom prioriteta. Ovo znači i da
+				ne postoji drugo sredstvo komunikacije
+			+ 3) Pretpostavka o sukobljavanju: Stanice moraju da otkriju
+				sukobljavanje (dva okvira se istovremeno emituju). Postoji
+				i primer token ringa gde stanice prosleđuju token koji daje
+				pravo na emitovanje
+			+ 4) Vremenski tok
+				a) Neprekidan, paket se može poslati bilo kad, nema sata
+				b) Vreme je podeljeno na intervale, slanje se podudara sa
+					početkom intervala a u intervalu može biti 0, 1 ili
+					više paketa. U poslednjem slučaju dolazi do kolizije
+			+ 5) Osluškivanje
+				a) Pre upotrebe kanala stanica utvrđuje da li je on slobodan
+					Ovo se uglavnom koristi u wired LAN
+				b) Stanica ne proverava da li je kanal slobodan, već naknadno
+					utvrđuje da li je paket uspešno poslat
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='41'>
+		<naslov>
+			Projektovanje mrežnog sloja i komutiranje paketa
+		</naslov>
+		<prez>
+			09/02:03
+		</prez>
+		<book>
+			256:257
+		</book>
+		<laza>
+			Zadatak mrežnog sloja je da sprovede pakete od izvora do odredišta
+				, moguće preko niza usmerivača
+			Pri tome, mrežni sloj mora da:
+			+ Poznaje topologiju mreže i da bira odgovarajuće putanje
+			+ Da vodi računa o ravnomernom opterećenju usmerivača
+			+ Da rešava probleme u komunikaciji između računara u različitim
+				mrežama
+			Grafik koji prikazuje komunikaciju između dva procesa preko
+				podmreže, paket komutira
+		</laza>
+	</pitanje>
+
+	<pitanje id='42'>
+		<naslov>
+			Usluge koje mrežni sloj obezbeđuje transportnom sloju
+		</naslov>
+		<prez>
+			09/4:5
+		</prez>
+		<book>
+			257
+		</book>
+		<laza>
+			Pretpostavke:
+			+ Usluge treba da su nezavisne od tehnogolije usmerivača
+			+ Transportni sloj ne sme da zna ništa o broju, vrstama i
+				topologiji usmerivača
+			+ Mrežne adrese koje se dostavljaju transportnom sloju su
+				uniformno označene (i u LAN i u WAN)
+			Nameće se pitanje, da li mrežni sloj treba da obezbeđuje
+				usluge sa ili bez uspostavljanja veze? Postoje dve škole:
+			+ Internet zajednica kaže da zadatak rutera treba da bude samo
+				da prosleđuje pakete i ništa drugo. Oni smatraju da je
+				podmreža nepouzdana i da hostovi sami treba da vrše
+				kontrolu grešaka i kontrolu toka
+			+ Telefonske kompanije smatraju da bi podmreža trebalo da
+				obezbedi pouzdanu uslugu zasnovanu na vezi. Tvrde da je
+				kvalitet usluge veoma teško postići bez direktnog
+				uspostavljanja veze
+		</laza>
+	</pitanje>
+
+	<pitanje id='43'>
+		<naslov>
+			Realizacija usluge mrežnog sloja bez uspostavljanja direktne veze
+		</naslov>
+		<prez>
+			09/6, 09/8
+		</prez>
+		<book>
+			257:258
+		</book>
+		<laza>
+			Paketi se pojedinačno ubacuju u mrežu i nezavisno usmeravaju
+			Paketi se zovu datagrami po analogiji sa telegramima a podmreža
+				se naziva datagramska
+			IP protokol - svaki paket sadrži adresu odredišta
+			Ruteri mogu imati tabele usmeravanja - za svaku destinaciju znaju
+				na koju izlaznu liniju da pošalju paket. Algoritam koji
+				vodi računa o ovim tabelama se naziva algoritam za usmeravanje
+		</laza>
+	</pitanje>
+
+	<pitanje id='44'>
+		<naslov>
+			Realizacija usluge mrežnog sloja sa uspostavljanjem direktne veze
+		</naslov>
+		<prez>
+			09/7, 09/9:10
+		</prez>
+		<book>
+			259
+		</book>
+		<laza>
+			Telefonija je motivacija
+			Pre slanja paketa sa podacima mora da se uspostavi putanja od
+				izvornog do odredišnog usmerivača
+			Takva veza se naziva virtuelno kolo, a podmreža se naziva podmreža
+				sa virtuelnim kolima
+			Kada se veza uspostavi, putanja od izvora do odredišta postaje
+				njen parametar koji se upisuje u tabele usmerivača
+			Svaki paket nosi identifikator virtuelnog kola kome pripada
+			Dijagram koji prikazuje tabelu sa rutiranjem i virtuelnim kolima
+			Ovaj VC identifikator ne mora da bude isti u svakom ruteru
+		</laza>
+	</pitanje>
+
+	<pitanje id='45'>
+		<naslov>
+			Poređenje podmreža sa virtuelnim kolima i datagramskih podmreža
+		</naslov>
+		<prez>
+			09/11:13
+		</prez>
+		<book>
+			259:261
+		</book>
+		<laza>
+			DGM - Datagramska podmreža
+			VCM - Podmreža sa virtuelnim kolima
+			1) Uspostava kola - kod DGM nije potrebna, kod VCM je neophodna
+			2) Adresiranje - kod DGM svaki paket sadrži adresu izvora i
+				odredišta, kod VCM sadrži samo broj virtuelnog kola.
+			3) Informacije o stanju - kod DGM ruteri ne održavaju informacije
+				o stanju veze (jer i nema veze), dok kod VCM svaka veza
+				zauzima jedan red u tabeli
+			4) Rutiranje - kod DGM svaki paket se nezavisno rutira, kod VCM
+				ruta se bira pri uspostavi VC, nakon toga je svi paketi
+				samo prate
+			5) Efekat prekida rada rutera - kod DGM gube se samo paketi koji
+				su bili u memoriji rutera u trenutku njegovog pada, dok kod
+				VCM se sva virtuelna kola prekidaju
+			6) Kvalitet usluge i kontrola zagušenja - teško uspostaviti kod DGM,
+				kod VCM lako ako je moguće alocirati dovoljno resursa unapred
+				za svako virtuelno kolo
+
+			1 - Kod VC potrebno je izvesno vreme za uspostavu veze ali se nakon
+				toga paketi lako usmeravaju. Kod nekih aplikacija ova zadrška
+				je neprihvatljiva
+			2 - adrese zauzimaju značajan deo prostora kod DGM dok kod VCM
+				velika količina memorije rutera se troši na održavanje tabele
+
+			U DGM tabela rutera ima odrednicu za svako moguće odredište, ali se
+				i kod VC koriste paketi za uspostavljanje veze sa potpunim
+				adresama
+		</laza>
+	</pitanje>
+
+	<pitanje id='46'>
+		<naslov>
+			Algoritmi za usmeravanje
+		</naslov>
+		<prez>
+			09/14:19
+		</prez>
+		<book>
+			261:262
+		</book>
+		<laza>
+			Zadatak mrežnog sloja je da pakete usmeri sa izvornog na odredišni
+				računar
+			Paketi taj put prelaze u više skokova
+			Algoritam za usmeravanja je deo softvera mrežnog sloja koji
+				odlučuje na koju liniju treba uputiti pristigli paket
+			U datagramskoj podmreži odluka se donosi za svaki paket ponaosob
+			U podmreži sa virtuelnim kolima odluka se donosi samo kod
+				uspostavljanja virtuelnog kola
+			Vredno je pomenuti razliku između usmeravanja (routing) i
+				prosleđivanja (forwarding)
+			+ Prosleđivanje se sastoji od prihvatanja paketa i pronalaženja
+				odgovarajuće izlazne linije u tabelama
+			+ Usmeravanje se bavi popunjavanjem i ažuriranjem tabela za
+				usmeravanje
+
+			Dobar algoritam za usmeravanje treba da ima sledeće osobine:
+			+ Tačnost
+			+ Jednostavnost
+			+ Robusnost - u hodu se rešavaju promene u topologiji mreže
+				i saobraćaja u njoj
+			+ Stabilnost - neki algoritmi nikada ne dostižu ravnotežu
+			+ Pravičnost
+			+ Optimalnost
+
+			Pravičnost i optimalnost su često u konfliktu, dijagram sa
+				primerom
+			Za kompromisno rešenje treba utvrditi šta se optimizuje:
+			+ Srednje kašnjenje paketa
+			+ Ukupan protok kroz mrežu
+			Kako su ova dva zahteva takođe u sukobu negde se, kao kompromis,
+				minimizira broj skokova paketa
+
+			Algoritmi za usmeravanje mogu biti neadaptivni (statičke rute),
+				i adaptivni, koji se pak razlikuju na osnovu porekla
+				informacija (okolni usmerivači ili svi usmerivači na mreži),
+				učestanosti promene putanje i metrici koja se koristi
+				za optimizaciju
+		</laza>
+	</pitanje>
+
+	<pitanje id='47'>
+		<naslov>
+			Princip optimalnosti
+		</naslov>
+		<prez>
+			09/20:22
+		</prez>
+		<book>
+			262:263
+		</book>
+		<laza>
+			Princip optimalnosti glasi:
+			Ako se usmerivač B nalazi na optimalnoj putanji između
+				usmerivača A i C, tada se optimalna putanja između
+				B i C nalazi na istoj toj putanji
+			Dokaz kontradokcijom
+			Odavde sledi da skup svih putanja od svih izvora ka jednom
+				odredištu obrazuje stablo sa korenom na odredištu. Ovo
+				stablo nazivamo stablo optimalnih putanja
+			Ovo stablo ne mora biti jedinstveno
+			Osnovni zadataka algoritama za usmeravanje je da otkriju
+				i primenjuju ova stabla.
+			Napomena - ako stablo nije jedinstveno i dozvolimo da se koriste
+				sve putanje, onda imamo DAG
+		</laza>
+	</pitanje>
+
+	<pitanje id='48'>
+		<naslov>
+			Usmeravanje najkraćom putanjom
+		</naslov>
+		<prez>
+			09/23:28
+		</prez>
+		<book>
+			263:266
+		</book>
+		<laza>
+			Koristi Dijkstrin algoritam za nalaženje najkraćeg puta od
+				jednog čvora do svih ostalih čvorova u grafu, kada taj
+				graf ne sadrži ivice negativne težine 1959
+			Pre svega se mora napraviti graf podmreže i mora se odrediti
+				metrika za težine ivica
+			Opis algoritma, prikaz rada algoritma i njegova implementacija
+				(spora, O(n^2))
+		</laza>
+	</pitanje>
+
 </ispit>
 
 <!--
