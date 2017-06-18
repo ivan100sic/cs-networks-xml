@@ -2463,7 +2463,7 @@
 			10/71:83
 		</prez>
 		<book>
-			405:
+			405:409
 		</book>
 		<laza>
 			Protokol TCP zasniva se na pretpostavci da svaka TCP veza
@@ -2521,16 +2521,29 @@
 
 	<pitanje id='70'>
 		<naslov>
-			
+			Protokol TCP: Raskidanje i uspostavljanje veze
 		</naslov>
 		<prez>
-
+			10/84:86
 		</prez>
 		<book>
-
+			409:411
 		</book>
 		<laza>
-
+			Veze se uspostavljanju trostepenim usaglašavanjem. SYN troši
+				jedan bajt kod rednog broja da bi mogao nedvosmisleno da
+				se potvrdi
+			Normalna uspostava veze:
+			+ H1 šalje poruku SYN (x, ?)
+			+ H2 odgovara sa SYN+ACK (y, x+1)
+			+ H1 šalje ACK+DATA (x+1, y+1)
+			Ako dve strane pokušaju da uspostave istovremeno vezu, uspostaviće
+				se samo jedna veza jer vezu identifikuju krajnje tačke
+			Za početni redni broj ne koristi se 0 već se koristi šema zasnovana
+				na satu sa tikom svake 4 mikrosekunde
+			Pri raskidanju veze koriste se tajmeri da bi se izbegao problem dve
+				vojske
+			Veza se raskida slanjem segmenta sa FIN bitom.
 		</laza>
 	</pitanje>
 
