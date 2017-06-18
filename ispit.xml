@@ -1987,6 +1987,328 @@
 		</laza>
 	</pitanje>
 
+	<pitanje id='60'>
+		<naslov>
+			Usluga prenosa koju transportni sloj obezebeđuje za više slojeve
+		</naslov>
+		<prez>
+			10/2:7
+		</prez>
+		<book>
+			364:365
+		</book>
+		<laza>
+			Kao srž hijerarhije slojeva ima zadatak da obezbedi pouzdan
+				i isplativ prenos podataka, bez obzira na fiziču mrežu koja
+				se nalazi između izvora i odredišta
+			Posao ovog sloja odvija se u pružanju usluga procesima u sloju
+				aplikacija
+			Koristi usluge nižeg, mrežnog sloja
+			Hardver i softver unutar transportnog sloja koji obavlja prenos
+				naziva se transportna jedinica
+			Transportna jedinica se može naći u kernelu, posebnom procesu,
+				biblioteci u mrežnoj aplikaciji ili na mrežnoj kartici
+			Dijagram koji opisuje vezu između slojeva aplikacija, transportnog
+				i mrežnog sloja
+			Postoje dve vrste usluge prenosa:
+			+ Sa uspostavljanjem direktne veze
+				Liči na odgovarajuću uslugu mrežnog sloja
+				Postoje tri faze:
+				+ uspostavljanje veze
+				+ prenos podataka
+				+ raskidanje veze
+			+ Bez uspostavljanja direktne veze, koja takođe liči na
+				odgovarajuću uslugu mrežnog sloja
+			Slični su načini adresiranja i kontrola toka
+			Razlog zašto postoje posebni slojevi jeste što se code transportnog
+				sloja izvršava samo na korisničkim računarima (hostovima) a
+				code mrežnog sloja pretežno na usmerivačima
+			Takođe, ovaj sloj omogućuje pouzdaniju uslugu od usluge mrežnog
+				sloja i sakriva detalje mrežnog sloja od korisničkih
+				aplikacija, odnosno pruža jednostavniji interfejs sloju
+				aplikacija
+		</laza>
+	</pitanje>
+
+	<pitanje id='61'>
+		<naslov>
+			Osnovne operacije u uslugama prenosa
+		</naslov>
+		<prez>
+			10/8:14
+		</prez>
+		<book>
+			365:368
+		</book>
+		<laza>
+			Transportni sloj obezbeđuje aplikacijama osnovne operacije
+				odnosno interfejs ka uslugama prenosa
+			Usluga prenosa slična je usluzi mrežnog sloja sa bitnom razlikom
+				što je usluga mrežnog sloja nepouzdana
+			Usluga prenosa sa uspostavljanjem direktne veze je u potpunosti
+				pouzdana
+			Druga razlika je u korisnicima usluga. Mrežna usluga je namenjena
+				samo transportnim jedinicama. Retki su korisnici koji pišu
+				svoje transportne jedinice. Sa druge strane, mnogi programi,
+				samim tim i programeri, vide transportne primitive. Ovo za
+				posledicu ima da transportna jedinica mora da bude jednostavna
+				za korišćenje
+			Postoje sledeće operacije (primitive):
+			LISTEN - ne šalju se paketi, proces se blokira dok ne dođe zahtev
+				za vezom
+			CONNECt - šalje se CONN. REQ. paket, aktivno se pokušava konekcija
+			SEND - šalju paketi sa podacima
+			RECEIVE - ne šalju se paketi - proces se blokira se dok ne stigne
+				paket sa podacima
+			DISCONNECT - šalje se paket DISCONN. REQ. - ova strana želi da
+				prekine vezu
+			Poruke koje se razmenjuju na ovom sloju nazivaju se jedinice
+				podataka transportnog sloja iliti TPDU
+			U paketima koje razmenjuje mrežni sloj nalaze se TPDU poruke
+			Najzad, paketi se nalaze u okvirima koje razmenjuje sloj veze
+				podataka
+			Primer aplikacije sa serverom, sa redosledom izvršenih operacija
+				od navedenih 5
+			Dijagram stanja transportne jedinice
+		</laza>
+	</pitanje>
+
+	<pitanje id='62'>
+		<naslov>
+			Berkli utičnice
+		</naslov>
+		<prez>
+			10/15:18
+		</prez>
+		<book>
+			368:369
+		</book>
+		<laza>
+			Berkli utičnice su druga vrsta osnovnih operacija. Ima ih osam:
+			+ SOCKET - kreira novu utičnicu i za nju obezbeđuje prostor u
+				tabeli u transportnoj jedinici
+			+ BIND - dodeljuje lokalnu adresu utičnici
+			+ LISTEN - Objavi da želiš da prihvatiš veze, napravi red
+				za dolazne pozive. Ova operacija ne blokira
+			+ ACCEPT - Blokira pozivaoca dok ne dođe do pokušaja uspostave
+				veze
+			+ CONNECT - Aktivno pokušavaj da uspostaviš vezu. Blokira se
+				dok od servera ne dobije potvrdu o uspostavi veze
+			+ SEND - Pošalji podatke preko veze
+			+ RECEIVE - Primi podatke preko veze
+			+ CLOSE - Simetrično zatvori vezu
+		</laza>
+	</pitanje>
+
+	<pitanje id='63'>
+		<naslov>
+			Sličnosti i razlike u radu mrežnih i transportnih protokola
+		</naslov>
+		<prez>
+			10/19:22
+		</prez>
+		<book>
+			373:374
+		</book>
+		<laza>
+			Usluga prenosa se ostvaruje preko transportnog protokola
+			Transportni protokoli podsečaju na protokole sloja veze:
+			+ I jedni i drugi sprovode kontrolu grešaka
+			+ Šalju podatke određenim redosledom
+			+ Obavljaju kontrolu toka
+			Razlike:
+			+ U DLL usmerivači komuniciraju direktno preko fizičkog kanala,
+				dok je u transportnom sloju to čitava podmreža
+			Posledice:
+			+ U transportnom sloju mora da se naznači adresa primaoca
+			+ Uspostava veze preko žice je jednostavnija jer je odredište
+				uvek, prosto, na drugom kraju. Kod TL potrebno je više
+				pripreme
+			+ Podmreža ima kapacitet privremenog skladištenja paketa
+				Ovo znači da treba predvideti mogućnost da paketi stignu
+				u pogrešnom redosledu, da se izgube ili čak dupliraju
+				što može imati katastrofalne posledice
+			+ Poslednja razlika je kvantitativne prirode - transportni
+				sloj mora da bude u stanju da paralelno održava veliki broj
+				veza, pa zato nije poželjno praviti bafer podataka za svaku
+				od njih
+		</laza>
+	</pitanje>
+
+	<pitanje id='64'>
+		<naslov>
+			Adresiranje kod transportnih protokola
+		</naslov>
+		<prez>
+			10/23:33
+		</prez>
+		<book>
+			374:376
+		</book>
+		<laza>
+			Kada aplikacija želi da uspostavi vezu sa procesom udaljene
+				aplikacije, mora da je eksplicitno navede
+			Uobičajeno je da se navede adresa procesa koji treba da osluškuje
+				zahteve za uspostavljanjem veze
+			Takve krajnje tačke na Internetu se nazivaju portovima, dok je
+				uopšteni naziv (nevezan za stek protokola ili mrežu) TSAP,
+				Transport Service Access Point
+			Odgovarajuće krajnje tačke u mrežnom sloju nazivaju se NSAP
+			Dijagram povezivanja
+			Na Hostu 1 aplikacioni proces koji se povezao za TSAP 1208 želi
+				da uspostavi vezu sa procesom na Hostu 2 koji sluša na TSAP
+				1522, koji služi kao server tekućeg vremena.
+			Opis procesa povezivanja u ovom primeru, u 5 koraka
+			Kako korisnički proces zna da je server za tekuće vreme baš na
+				TSAP 1522
+			+ Jedna mogućnost je da je to praksa u dužem vremenskom periodu
+				tj. neka vrsta standarda
+			+ Druga je protokol za početno povezivanje
+				Svaki računar ima Server Procesa koji zastupa sisteme koji
+					se retko koriste
+			On istovremeno osluškuje više priključaka
+			Korisnik usluge šalje CONNECT na TSAP adresu usluge koju
+				želi. Ako nijedan server ne odgovori na zahtev, veza se
+				uspostavlja sa serverom procesa, koji kad primi zahtev,
+				kreira server za odgovarajuću uslugu i omogućuje tom serveru
+				da preuzme konekciju
+			Server procesa se vraća na osluškivanje novih zahteva
+			U nekim situacijama nije moguće praviti server po potrebi, rešenje
+				je u kreiranju specijalnog procesa - servera imena tj.
+				server direktorijuma. I u ovom slučaju je neophodno znati
+				TSAP ovog servera - analogija sa 988 telefonskim servisom
+		</laza>
+	</pitanje>
+
+	<pitanje id='65'>
+		<naslov>
+			Uspostavljanje veze kod transportnih protokola
+		</naslov>
+		<prez>
+			10/34:48
+		</prez>
+		<book>
+			376:380
+		</book>
+		<laza>
+			Vrlo složen problem iako se čini da je dovoljno da jedna jedinica
+				pošalje TPDU poruku CONNECTION REQUEST i da čeka CONNECTION
+				ACCEPTED.
+			Razlozi za nastana problema:
+			+ Paket se izgubi
+			+ Paket se uskladišti
+			+ Paket se duplira
+			Primer sa bankom
+			U osnovi problema su zakasneli duplikati
+			Jedna strategija je da se koriste jednokratne transportne adrese,
+				međutim tada ne možemo da koristimo server procesa
+			Druga strategija je da se svakoj vezi pridruži redni broj, loše
+				jer je potrebno neograničeno održavati informacije o prethodnim
+				vezama
+			Prva stvar koju moramo da uradimo jeste da pronađemo način da
+				sprečimo pakete da neograničeno dugo lutaju mrežom
+			Ovo se može postići sledećim tehnikama ili njihovim kombinacijama:
+			+ Odgovarajućim projektovanjem mreže
+				Ovde podrazumevamo mrežu bez petlji u kojoj se kašnjenje
+				prouzrokovano zagušenjem može izračunati kao vreme putovanja
+				najdužom mogućom putanjom
+			+ Smeštanjem brojača skokova u paket
+				Postavimo početnu vrednost brojača, svakim prenosom se ovaj
+				broj smanjuje za jedan. Odbacuju se paketi čiji je brojač
+				pao na nulu
+			+ Vremenskim označavanjem svakog paketa
+				Svaki paket nosi vreme nastanka a usmerivači ih odbacuju
+				nakon nekog perioda
+			Osim paketa treba uništiti i njegove potvrde
+			Uvedimo vreme T - mali umnožak životnog veka paketa. Nakon tog
+				vremena možemo biti sigurni da su nestali svi tragovi
+				paketa na mreži
+			Sada možemo osmisliti tehniku za pouzdano uspostavljanje veze
+
+			Sledeći metod je predložio Tomlinson, a doradili su ga Sanšajn i
+				Delal. Njegove varijante se koriste u TCP protokolu
+			U svaki računar je ugrađen sat tekućeg vremena i ti satovi treba
+				da su sinhronizovani
+			Satovi su binarni brojači koji se inkrementiraju u jednakim
+				vremenskim intervalima
+			Broj bitova u brojaču treba da je veći ili jednak broju bitova
+				u rednim brojevima poruka
+			Pretpostavlja se da sat nastavlja da radi i kada računar otkaže
+
+			Suština Tomlinsonovog mehanizma je da obezbeđuje da se dve TPDU
+				poruke sa istim rednim brojem nikada ne nađu istovremeno
+				na mreži
+			Kada se veza uspostavi, za početni redni broj koristi se k bitova
+				najmanje težine sata
+			Na taj način svaka veza započinje obeležavanjem svojih TPDU poruka
+				različitim početnim rednim brojem
+
+			Primer sa dijagramom i zabranjenom zonom
+
+			Neka je T = 60s i neka sat otkucava jednom u sekundi i neka je
+				u trenutku t = 30s jednom običnom TPDU paketu X poslatog
+				vezom 5 dodeljen redni broj 80
+			Čim je poslao paket X računar otkazuje ali se ubrzo oporavlja
+			U trenutku t = 60s počinje da uspostavlja veze 0 do 4.
+			U trenutku t = 70s ponovo uspostavlja vezu 5 koristeći redni broj
+				70.
+			U narednih 15s šalje TPDU pakete sa podacima sa rednim brojevima 70
+				do 80 pa se u trenutku t = 85s na mreži pojavljuje novi
+				paket sa rednim brojem 80 i vezom 5. Međutim, kako je prošlo
+				samo 25 sekundi od nastanka paketa X, imamo problem.
+			Da bi se izbeglo nastajanje ovakvih dupliranih paketa, neophodno
+				je razgraničiti 2D prostor vreme/redni broj, tako da dva
+				paketa iz dve različite konekcije sa istim rednim brojem ne
+				mogu da postoje istovremeno na mreži, odnosno mora da važi da
+				su poslati u razmaku od najmanje T sekundi.
+			Ovo se radi uvođenjem zabranjenih zona - nedozvoljene kombinacije
+				su (t=x, id=y) za y-x između 0 i T (slika)
+			Ovaj protokol može doživeti probleme:
+			+ Ako računar prevelikom brzinom šalje pakete pa brzina trošenja
+				rednih brojeva prevazilazi brzinu potencijalnog dodeljivanja
+				početnih rednih brojeva. U suštini, postojaće gornja granica
+				za brzinu slanja
+			+ Pri bilo kojoj manjoj brzini, nakon dovoljno vremena ući će se
+				u zabranjenu zonu sa leve strane
+			I upravljački paketi za uspostavljanje veze mogu da kasne pa može
+				nastati problem sa usklađivanjem dve strane oko početnog
+				rednog broja
+
+			Tomlinsonovo trostepeno usaglašavanje (1975)
+
+			Protokol ne zahteva da obe strane započnu emisiju sa istim rednim
+				brojem, nije neophodno usaglašavanje prema globalnom vremenu
+			Dijagram normalnog uspostavljanja veze
+			U zagradama je (redni broj, broj potvrde)
+
+			+ H1 šalje paket CR (x, ?)
+			+ H2 odgovara sa ACK (y, x)
+			+ H1 šalje podatke i (x, y)
+			
+			Šta ako se pojavi zakasneli duplikat prvog CR paketa?
+
+			+ H2 odgovara sa ACK (y, x), tražeći potvrdu da je H1 zaista
+				želeo da uspostavi tu vezu
+			+ Kako H1 nije tražio ovu vezu, odgovara sa REJECT (?, y)
+
+			Najgori slučaj je sledeći:
+
+			Neka je H1 računar korisnika, H2 računar banke
+
+			+ H1 šalje paket CR (x, ?)
+			+ H2 šalje ACK (y, x)
+			+ H1 šalje zahtev banci da proda $100000 akcija, DATA (x, y),
+				server banke odobrava ovu transakciju
+			+ U međuvremenu hostu H2 stiže duplikat prvog zahteva za
+				konekcijom. Server ovog puta odgovara sa (z, x)
+			+ U međuvremenu stiže duplikat prethodnog DATA zahteva da se
+				proda $100000 akcija, isto sa DATA (x, y). Server odbija
+				ovaj zahtev jer je pogrešan redni broj, treba da bude (x, z)
+			+ Tek sada H1 dobija odgovor ACK (z, x). Kako on nije tražio
+				ovu vezu, odbiće je tj. poslaće REJECT (x, z)
+		</laza>
+	</pitanje>
+
 </ispit>
 
 <!--
