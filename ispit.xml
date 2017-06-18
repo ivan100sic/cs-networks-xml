@@ -2698,7 +2698,126 @@
 			448:451
 		</book>
 		<laza>
-			
+			Prvi sistemi za prenos elektronske pošte imali su samo protokol
+				za prenos datoteka
+			Pravilo je bilo da prvi red datoteke sadrži adresu primaoca
+			Nedostaci:
+			+ Nepogodno za slanje poruke grupi korisnika
+			+ Poruke nemaju internu strukturu što otežava računarsku
+				obradu (npr. prosleđivanje poruka)
+			+ Pošiljalac ne zna da li je poruka stigla na odredište
+			+ Nije lako organizovati prijem pošte u odsustvu (sekretarica)
+			+ Korisničko okruženje je loše integrisano sa sistemom za prenos
+				tj. poruka se piše u zasebnom programu pa se tek onda poziva
+				program za slanje
+			+ Poruke nisu mogle da istovremeno sadrže tekst, crteže, faks,
+				glas, itd
+			Sistem elektronske pošte obuhvata dva podsistema:
+			+ Korisničkog agenta koji omogućava čitanje i sastavljanje poruka
+				Lokalni programi koji obezbeđuju interfejs sa sistemom
+			+ Agenta za prenos poruka
+				najčešće daemon
+			Podržavaju 5 osnovnih funkcija:
+			+ Sastavljanje poruka
+			+ Prenos
+				obuhvata uspostavu veze, slanje i raskidanje veze, treba da
+				radi automatski
+			+ Izveštavanje
+				da li je poruka stigla
+			+ Prikaz dolaznih poruka
+			+ Obrada
+				mogućnost odbacivanja primljenih poruka pre/posle čitanja,
+				ponovnog čitanja starijih poruka, prosleđivanje, mogućnost
+				neke druge obrade
+			Neki sistemi pružaju i složenije usluge:
+			+ Forwarding
+			+ Mailing liste
+			+ Kopiranje poruka
+			+ Slanje nevidljivih kopija
+			+ Enkripcija
+
+			Omotnica poruke, zaglavlje poruke i sadržaj i njen sadržaj
+				analogija sa klasičnom poštom
+			Omotnica služi podatke potrebne za prenos poruke, npr. adresu
+				Agenti koriste za usmeravanje
+			Zaglavlje sadrži upravljačke podatke namenjene korisničkim agentima
+			Telo je namenjeno primaocu
+		</laza>
+	</pitanje>
+
+	<pitanje id='75'>
+		<naslov>
+			Korisnički agenti u sistemu elektronske pošte
+		</naslov>
+		<prez>
+			11/55:62
+		</prez>
+		<book>
+			451:453
+		</book>
+		<laza>
+			Korisnički agent prihvata komande za:
+			+ Sastavljanje poruka
+			+ Odgovaranja na poruke
+			+ Rad sa poštanskim sandučićima (mailbox)
+			Za slanje poruke korisnik mora da ima:
+			+ Spremnu poruku
+			+ Odredišnu adresu
+			+ Druge parametre
+			Većina email sistema podržava mailing liste
+			Opis rada sa korisničkim agentom
+			Kolone, flegovi
+			+ K - pročitana
+			+ A - odgovoreno
+			+ F - prosleđena
+			+ postoje i drugi
+			Kod nekih sistema korisnik može da izabere šta će da se prikaže
+				tako što definiše svoj korisnički profil
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='76'>
+		<naslov>
+			Format RFC 822
+		</naslov>
+		<prez>
+			11/63:66
+		</prez>
+		<book>
+			453:454
+		</book>
+		<laza>
+			Format poruka može biti tekstualni (primer RFC 822) ili multi-
+				medijalni, primer MIME
+			RFC 822 sadrži:
+			+ jednostavnu omotnicu
+			+ zaglavlje od nekoliko polja
+			+ prazan red
+			+ tekst poruke
+			Neki od headera su To, Cc, Bcc, From, Sender, Received,
+				Return-Path
+			Osim ovih, može biti i još ovih polja: Date, Reply-To, Message-Id,
+				In-Reply-To, References, Keywords, Subject
+			U početku je email bio isključivo za ASCII tekst pa je RFC 822 bio
+				dovoljan, međutim danas to nije slučaj iz sledećih razloga:
+			+ Poruka je na jeziku koji ne koristi samo engleska slova
+			+ Poruka ne sadrži (samo) tekst već zvuk ili sliku
+		</laza>
+	</pitanje>
+
+	<pitanje id='77'>
+		<naslov>
+			Format MIME
+		</naslov>
+		<prez>
+			11/67:84
+		</prez>
+		<book>
+			454:459
+		</book>
+		<laza>
+			...
 		</laza>
 	</pitanje>
 
