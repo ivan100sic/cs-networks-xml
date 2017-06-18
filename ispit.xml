@@ -1728,7 +1728,8 @@
 			Vektori razdaljine su se koristili u ARPANET do 1979
 			Prešlo se na LSR iz sledećih razloga
 			+ Za merenje rastojanja je korišćena dužina reda čekanja, što
-				je sa pojavom linija bržih od 56kbps postao problem
+				je sa pojavom linija bržih od 56kbps postao problem. Naime,
+				algoritam nije uzimao u obzir brzinu linije
 			+ Algoritam je sporo dostizao ravnotežu (problem približavanja
 				beskonačnosti)
 			Logika LSR je jednostavna i nalaže usmerivaču da:
@@ -1738,8 +1739,26 @@
 			+ napravi paket sa svim podacima koje do toga trenutka ima
 			+ pošalje taj paket svim usmerivačima
 			+ izračuna najkraću putanju do svakog usmerivača
+			Radi upoznavanja suseda na svaku liniju se šalje pozdravni paket
+				HELLO, usmerivači koji dobiju taj paket se predstavljaju,
+				njihova imena moraju biti globalno jedinstvena
+			Ako je više usmerivača povezano LANom, onda lokalnu mrežu
+				možemo predstaviti jednim čvorom
+		</laza>
+	</pitanje>
 
-			
+	<pitanje id='53'>
+		<naslov>
+
+		</naslov>
+		<prez>
+
+		</prez>
+		<book>
+
+		</book>
+		<laza>
+
 		</laza>
 	</pitanje>
 
