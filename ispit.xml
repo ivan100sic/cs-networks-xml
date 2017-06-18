@@ -1715,7 +1715,8 @@
 
 	<pitanje id='52'>
 		<naslov>
-			Usmeravanje zasnovano na stanju veze: zadaci i upoznavanje suseda
+			Usmeravanje zasnovano na stanju veze:
+				zadaci i upoznavanje suseda
 		</naslov>
 		<prez>
 			09/36:39
@@ -1749,7 +1750,8 @@
 
 	<pitanje id='53'>
 		<naslov>
-			Usmeravanje zasnovano na stanju veze: merenje troškova slanja linijom
+			Usmeravanje zasnovano na stanju veze:
+				merenje troškova slanja linijom
 		</naslov>
 		<prez>
 			09/40:42
@@ -1771,6 +1773,217 @@
 				oscilovati između
 			Jedno rešenje je da se saobraćaj distribuira na nekoliko linija
 				kada je to moguće
+		</laza>
+	</pitanje>
+
+	<pitanje id='54'>
+		<naslov>
+			Usmeravanje zasnovano na stanju veze:
+				pravljenje paketa sa stanjem veze
+		</naslov>
+		<prez>
+			09/43:45
+		</prez>
+		<book>
+			271:272
+		</book>
+		<laza>
+			Svaki usmerivač pravi paket sa stanjem veze pošto je prikupio
+				odgovaraćuje podatke:
+			+ Identifikaciju pošiljaoca
+			+ Redni broj paketa
+			+ Starost paketa
+			+ Listu suseda i kašnjenje do njih
+			Nameće se pitanje kada treba praviti paket sa stanjem veze:
+			+ Periodično
+			+ Posle nekih događaja, kao što je otkaz ili oporavak neke linije
+				ili usmerivača ili promena nekog svojstva npr. opterećenja
+		</laza>
+	</pitanje>
+
+	<pitanje id='55'>
+		<naslov>
+			Usmeravanje zasnovano na stanju veze:
+				distribuiranje paketa sa stanjem veze
+		</naslov>
+		<prez>
+			09/46:50
+		</prez>
+		<book>
+			272:273
+		</book>
+		<laza>
+			Najkritičniji deo algoritma je pouzdano distribuiranje paketa
+				sa stanjem veze. Prema osnovnoj zamisli, ovi paketi se
+				distribuiraju plavljenjem. Svaki paket sadrži redni broj
+				koji se uvećava za svaki naredni paket. Problem nastaje
+				ako se redni brojevi ciklično ponavljaju. Rešenje je u
+				korišćenju velikih tj. 32-bitnih rednih brojeva, uz jedan
+				paket u sekundi ponavljanje bi se desilo nakon 137 godina
+			Problemi:
+			+ Kada usmerivač otkaže gubi evidenciju rednih brojeva
+			+ Ako se redni broj ošteti, veliki broj paketa se odbacuje kao
+				zastareo bez potrebe
+			Rešenje: uz redni broj se uključi i starost paketa - brojač
+				koji se svake sekunde smanjuje za jedan
+			Robusnost algoritma se povećava sledećim tehnikama:
+			+ Kada paket stigne on se najpre smešta u "čekaonicu" pre nego
+				u red za slanje
+			+ Ako drugi paket iz istog izvora stigne pre nego što se prvi
+				pošalje porede se redni brojevi
+			+ Ako se oni razlikuju odbacuje se stariji
+			Zbog mogućih grešaka na linijama zahteva se potvrda za svaki
+				paket sa stanjem veze
+			Kada je linija prazna čekaonica se proverava da bi se odabrao
+				paket ili potvrda za slanje
+			Izgled strukture podataka za usmerivač B je:
+			Prvi ACF su send flags, a drugi ACK flags
+			Izvor, Seq, Age, A, C, F, A, C, F, Data
+			A    , 21 , 60 , 0, 1, 1, 1, 0, 0,
+			F    , 21 , 60 , 1, 1, 0, 0, 0, 1,
+			E    , 21 , 59 , 0, 1, 0, 1, 0, 1
+			...
+			B je direktno povezan za A, C, F. Svaki od flagova govori
+				da paket treba da se pošalje na tu liniju odnosno da li
+				treba da se potvrdi na tu liniju
+		</laza>
+	</pitanje>
+
+	<pitanje id='56'>
+		<naslov>
+			Usmeravanje zasnovano na stanju veze:
+				izračunavanje novih putanja
+		</naslov>
+		<prez>
+			09/51
+		</prez>
+		<book>
+			273:274
+		</book>
+		<laza>
+			Kada usmerivač prikupi sve pakete sa stanjem veze može da se
+				konstruiše graf podmreže
+			Može se upotrebiti Dijkstrin algoritam za konstruisanje najkraćih
+				putanja. Kako svaku ivicu grafa imamo u oba smera, možemo
+				raditi sa tim ivicama odvojeno ili izračunati prosek
+				i smatrati ih za jednu
+			Rezultati se upisuju u tabele i nastavlja se sa radom
+			Problemi:
+				Velika memorija za tabele u velikim podmrežama
+				Trajanje izračunavanja
+				Problemi u hardveru i softveru prave haos
+			OSPF protokol koji se koristi na Internetu koristi Link State
+				algoritam
+		</laza>
+	</pitanje>
+
+	<pitanje id='57'>
+		<naslov>
+			Hijerarhijsko usmeravanje
+		</naslov>
+		<prez>
+			09/52:54
+		</prez>
+		<book>
+			274:275
+		</book>
+		<laza>
+			Kako mreža raste rastu i tabele u usmerivačima
+			Stoga se usmeravanje vrši hijerarhijski - usmerivači se dele
+				u oblasti, u dva ili više nivoa
+			Za ogromne mreže, dva nivoa najčešće nisu dovoljna.
+			Optimalan broj nivoa u hijerarhiji za N usmerivača je ln N,
+				pri čemu tabele usmerivača sadrže e ln N odrednica.
+				Ovo se odnosi na minimizaciju utrošene memorije
+		</laza>
+	</pitanje>
+
+	<pitanje id='58'>
+		<naslov>
+			Realizovanje neusmerenog emitovanja
+		</naslov>
+		<prez>
+			09/55:57
+		</prez>
+		<book>
+			275:277
+		</book>
+		<laza>
+			Drugo ime: Broadcast Routing
+			Ponekad je potrebno poslati poruke mnogim drugim računarima
+			Prvi metod je slanje paketa na svako odredište. Ovaj način nije
+				dobar jer se opterećuje propusni opseg i pošiljalac mora
+				da zna adrese svih odredišta
+			Drugi metod je plavljenje. Međutim, kod neusmerenog emitovanja
+				javljaju se isti problemi kao kod korišćenja plavljenja za
+				usmereno emitovanje - generiše se previše paketa i troši
+				se previše propusnog opsega
+			Treći način je usmeravanje na više odredišta, gde svaki paket
+				sadrži listu odredišta ili bitmapu koja određuje destinacije.
+				Kada paket stigne, pravi se po jedna njegova kopija za svaku
+				izlaznu liniju, a svaka kopija sadrži samo one destinacije
+				do koji se može najbrže doći preko baš te linije. Na neke
+				linije možda neće ni biti poslat paket
+			Četvrti je da se koristi samo stablo optimalnih putanja, ili
+				neko drugo pokrivajuće stablo. Ovaj metod je jako dobar jer
+				troši minimalnu količinu propusnog opsega i broj paketa ali
+				zahteva da usmerivač poznaje neko pokrivajuće stablo. Ova
+				informacija je dostupna ako se koristi link state routing
+				ali nije ako se koristi npr. usmeravanje vektorom udaljenosti
+			Peti metod je prosleđivanje paketa ispitivanjem izvora. Ova metoda
+				radi tako što ruter ispituje da li je paket stigao od izvora
+				onom linijom kojom bi inače bio poslat kad bi bio odredište.
+				Ako jeste, onda se verovatno radi o prvoj kopiji koja je
+				pronašla najbolju putanju i prosleđuje se dalje na sve
+				ostale linije, u suprotnom se odbacuje. 
+		</laza>
+	</pitanje>
+
+	<pitanje id='59'>
+		<naslov>
+			Višesmerno usmeravanje
+		</naslov>
+		<prez>
+			09/58:63
+		</prez>
+		<book>
+			277:278
+		</book>
+		<laza>
+			Drugo ime: Multicast Routing
+			Nekada je pri realizovanju distribuirane baze podataka potreban
+				zajednički radi više udaljenih procesa, pa je neophodno da
+				proces pošalje istu poruku većem broju drugih procesa
+			Slanje poruka se zove višesmerno emitovanje a algoritam se zove
+				algoritam za višesmerno usmeravanje
+			Pojam grupe. Grupa može biti destinacija kod ovog vida emitovanja
+			Treba da postoji mehanizam za kreiranje i raspuštanje grupa,
+				smeštanje procesa u grupe i uklanjanje iz njih.
+			Da bi mogao da šalje pakete u više smerova, svaki usmerivač
+				konstruiše pokrivajuće stablo koje obuhvata sve druge
+				usmerivače.
+			Neki računari se mogu nalaziti u više grupa
+			Kada proces pošalje višesmerni paket svim članovima grupe, prvi
+				usmerivač ispituje svoje pokrivajuće stablo i sa njega okreše
+				sve grane koje ne vode ka nekom članu grupe.
+			Ovo tzv. proređivanje stabla se može uraditi na više načina:
+			+ Ako se usmeravanja vrši na osnovu stanja veze, usmerivač poznaje
+				topologiju, pa napredujući po razgranatom stablu eliminiše
+				usmerivače koji ne spadaju u pojedinu grupu
+			+ Ako se usmeravanje vrši na osnovu vektora razdaljine, usmerivač
+				koji nema računare iz dotične grupe na primljenu poruku
+				odgovara sa PRUNE što znači da nije zainteresovan za dalji
+				prijem - rekurzivni pristup, usmerivač treba da odgovori sa
+				PRUNE svom prethodniku ako su svi njegovi sledbenici odgovorili
+				sa PRUNE
+			Nedostatak je velika količina memorije potrebna za pamćenje ovih
+				stabala
+			Alternativa je stablo zasnovano na jezgru.
+			Za svaku grupu se bira jedan predstavnik (ruter) koji je približno
+				u sredini stabla i samo on pamti stablo za tu grupu. Sve
+				poruke za tu grupu se prvo šalju predstavniku a on ih dalje
+				prosleđuje. Iako ovo stablo neće biti optimalno za sve
+				izvore, memorijska ušteda je značajna
 		</laza>
 	</pitanje>
 
