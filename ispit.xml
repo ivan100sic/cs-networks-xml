@@ -2309,6 +2309,231 @@
 		</laza>
 	</pitanje>
 
+	<pitanje id='66'>
+		<naslov>
+			Raskidanje veze kod transportnih protokola
+		</naslov>
+		<prez>
+			10/49:55
+		</prez>
+		<book>
+			380:384
+		</book>
+		<laza>
+			Složen problem
+			Raskidanje veze može biti
+			+ Simetrično - veza se tretira kao dvosmerna. Raskidanje jedne
+				strane ne raskida drugu. Radi dobro kada svaki od procesa
+				šalje fiksnu količinu podataka i tačno zna kada ih je sve
+				poslao
+			+ Asimetrično - jedna strana može da prekine oba smera. Ovo
+				prekidanje je naglo i može da izazove gubitak podataka
+			+ Možemo da zamislimo da H1 raskida vezu i ako računar 2 isto
+				to uradi veza je raskinuta
+			+ Nažalost to ne radi uvek - problem dve vojske
+				Objašnjenje problema i argument zašto nema rešenja
+			U praksi, rizik raskidanja veze bez da je druga strana saglasna
+				nije tako veliki kao u problemu dve vojske
+
+			Prvi način za raskid veze jeste ako H1 želi da raskine. On pošalje
+				DR računaru H2 i počinje svoj tajmer, H2 uspešno primi
+				paket, započinje svoj tajmer i šalje DR računaru H1.
+				Kada H1 primi ovaj paket, onda on oslobađa vezu i šalje ACK
+				drugom računaru, koji po primanju ACK oslobađa vezu.
+
+			Drugi način na koji se veza može raskinuti jeste ako u prethodnom
+				scenariju ACK ne stigne do H2. H1 je već oslobodio vezu a H2
+				će to učiniti po isteku tajmera.
+
+			Treći scenario je ako se zagubi prvi odgovor računara H2. Po isteku
+				timeouta u H1, H1 će ponovo započeti tajmer i pokušati ponovo
+				da oslobodi vezu, i ovog puta će uspeti.
+
+			Četvrti scenario jeste ako H1 pokuša N puta da oslobodi vezu a
+				da mu u međuvremenu ne stigne nijedan odgovor od H2. U tom
+				slučaju H1 zatvara vezu. Ako je neki od DRova stigao
+				do H2, on će tada započeti tajmer i zatvoriti vezu po isteku
+				timeouta
+
+			Šta ako u četvrtom scenariju nijedan DR ne stigne do H2? Tada će
+				sa strane H2 ostati otvorena konekcija beskonačno dugo.
+				Jedno rešenje je da, ako u nekom vremenskom periodu ne stigne
+				nijedan paket, konekcija se zatvara. Ovako, obe strane moraju
+				periodično da šalju prazne pakete kako bi javile drugoj strani
+				da su i dalje na vezi.
+		</laza>
+	</pitanje>
+
+	<pitanje id='67'>
+		<naslov>
+			Protokol UDP
+		</naslov>
+		<prez>
+			10/56:65
+		</prez>
+		<book>
+			398:401
+		</book>
+		<laza>
+			User Datagram Protocol prenosi Segmente koji se sastoje od
+				zaglavlja od 8 bajtova i korisničkih podataka
+			Redom to su: Izvorišni port, odredišni port, Dužina UDP segmenta
+				i UDP suma provere (svaki po dva bajta)
+			Prednost u odnosu na IP je što se zadaje izvorni i odredišni port
+			Izvorni port u zaglavlju je potreban kada treba poslati odgovor
+				pošiljaocu, ali ovo polje nije obavezno
+			Dužina UDP paketa uključuje zaglavlje.
+			Kontrolna suma nije obavezna, i ako se ne koristi popunjava se
+				nulama. Za njeno računanje koristi se ceo UDP paket i, ako
+				on putuje pomoću IP, IP pseudozaglavlje. Ako dužina UDP
+				paketa nije deljiva sa 2 (broj bajtova), poslednjem bajtu se
+				dopisuje 0 bajt. Sabiranje se vrši kao komplement jedinice.
+				U komplementu jedinice broj nula ima dva zapisa, kao sve nule
+				i sve jedinice. Za predstavljanje nule u checksumu koristi se
+				zapis sa svim jedinicama. Isključivanje ovog izračunavanja
+				se ne preporučuje
+			Šta UDP ne radi:
+			+ Ne upravlja tokom
+			+ Ne vrši kontrolu grešaka
+			+ Ne šalje ponovo pogrešno primljene segmente
+			Šta radi:
+			+ Predstavlja interfejs ka IP protokolu
+			+ Demultipleksira procese koji istovremeno koriste različite
+				portove
+			Naročito je pogodan u klijent-server kombinacijama
+			Remote Procedure Call - Birel i Nelzon (1984)
+			Client stub i server stub se pozivaju od strane klijenta/servera
+				i šalju parametre/odgovor drugoj strani
+			Problemi - ako se ne radi o čistoj funkciji, ako se prenose
+				pokazivači, ako se prenose nizovi
+			Većina Internet aplikacija zahteva pouzdanu i uređenu isporuku, pa
+				UDP nije uvek dovoljan
+		</laza>
+	</pitanje>
+
+	<pitanje id='68'>
+		<naslov>
+			Protokol TCP: namena i model
+		</naslov>
+		<prez>
+			10/65:70
+		</prez>
+		<book>
+			404:405
+		</book>
+		<laza>
+			Transmission Control Protocol - protokol za upravljanje prenosom
+			Namena mu je da obezbedi pouzdan tok bajtova kroz nepouzdanu
+				kombinovanu mrežu
+			Svaki računar koji podržava TCO ima TCP transportnu jedinicu:
+			+ kao proceduru u biblioteci
+			+ kao korisnički proces
+			+ kao deo jezgra OS
+			U sva tri slučaja TCP jedinica rasi sa TCP tokovima i obezbeđuje
+				interfejs ka IP sloju
+			Ova jedinica prihvata tokove korisničkih podataka od lokalnih
+				procesa od najviše 64KB.
+			Kako IP sloj ne garantuje da će datagrami biti ispravno isporučeni,
+				transportna jedinica aktivira tajmere i po potrebi ponovo šalje
+			TCP obezbeđuje pouzdanost koju IP protokol ne obezbeđuje
+			Usluga TCP oživljava pošto obe strane kreiraju krajnje tačke veze,
+				utičnice
+			Svaka utičnica ima svoju adresu (32 bitna IP adresa računara
+				i 16 bitni broj lokalnog porta)
+			Portovi do 1024 su opšte poznati i rezervisani su za standardne
+				usluge:
+			Port, Protokol, Svrha
+			21  , FTP     , Transfer fajlova
+			23  , Telnet  , Login na daljinu
+			25  , SMTP    , E-mail
+			69  , TFTP    , Trivijalni protokol za transfer fajlova
+			79  , Finger  , Traženje informacija o korisniku
+			80  , HTTP    , WWW
+			110 , POP3    , Udaljeni pristup E-mailu
+			119 , NNTP    , USENET vesti
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='69'>
+		<naslov>
+			Protokol TCP: segmenti
+		</naslov>
+		<prez>
+			10/71:83
+		</prez>
+		<book>
+			405:
+		</book>
+		<laza>
+			Protokol TCP zasniva se na pretpostavci da svaka TCP veza
+				održava svoj 32-bitni redni broj (sequence number).
+			Transportne jedinice razmenjuju podatke u obliku segmenata koji
+				sadrže 20-bajtno zaglavlje
+			Veličinu segmenta određuje TCP softver
+			Svaki TCP paket mora da stane u koristan teret IP paketa,
+				65515 = (2^16-1) - 20 (IP header)
+			Za svaku mrežu postoji najveća jedinica prenosa, npr. Ethernet ima
+				ograničenje od 1500
+			TCP segment sadrži:
+			+ 16 bitova, izvorišni port (obavezan)
+			+ 16 bitova, odredišni port
+			+ 32 bita, redni broj
+			+ 32 bita, broj potvrde
+				Sledeći očekivani bajt. TCP numeriše sve bajtove
+			+ 4 bita, dužinu TCP zaglavlja, broj 32-bitnih reči
+				Polje opcije je promenljive dužine
+			+ 6 bitova, neiskorišćeno - nakon više od 30 godina
+			+ 6 flagova:
+				URG - koristi se kada treba poslati urgentne podatke
+					sadrži priraštaj koji treba dodati tekućem seq broju
+					da bi se dobio redni broj segmenta sa hitnim podacima
+					i predstavlja zamenu za slanje zahteva za prekid
+				ACK - uključen je ako se koristi šlepovana potvrda
+				PSH - nalaže primaocu da odmah isporuči podatke sloju iznad
+				RST - ponovo se uspostavlja veza koja je oštećena usled
+					pada računara ili nekog drugog razloga. Koristi se i za
+					odbijanje neispravnih segmenata. Ukratko, ako je ovaj
+					bit postavljen, negde postoji problem
+				SYN - zahtev za uspostavu veze
+				FIN - služi za zatvaranje veze
+					SYN i FIN troše po jedan bajt rednih brojeva što garantuje
+					obradu u ispravnom redosledu
+			+ 16 bitova, veličina prozora
+				Govori o tome koliko bajtova može da se primi. Dozvoljeno je
+				0 - u tom slučaju potvrđujemo prijem ali obaveštavamo drugu
+				stranu da trenutno ne možemo da primamo. Možemo da nastavimo
+				da primamo tako što pošaljemo novi paket sa istim ack brojem
+				i veličinom prozora većom od 0
+			+ 16 bitova, suma provere
+				Isti algoritam kao kod UDP, obuhvata i pseudozaglavlje
+			+ 16 pokazivač na urgentne podatke
+				Ranije opisan
+			+ 32n bitova za opcije
+				Omogućavaju uključivanje dodatnih mogućnosti, npr. da se zada
+				maksimalan koristan TCP teret. Podrazumevana vrednost je 536,
+				jer se od svakog računara na Internetu zahteva da prihvati
+				TCP segmente dužine najmanje 556 bajtova. Ova dužina ne
+				mora biti ista u oba smera
+			+ Podaci
+		</laza>
+	</pitanje>
+
+	<pitanje id='70'>
+		<naslov>
+			
+		</naslov>
+		<prez>
+
+		</prez>
+		<book>
+
+		</book>
+		<laza>
+
+		</laza>
+	</pitanje>
+
 </ispit>
 
 <!--
