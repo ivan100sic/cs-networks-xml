@@ -1749,16 +1749,28 @@
 
 	<pitanje id='53'>
 		<naslov>
-
+			Usmeravanje zasnovano na stanju veze: merenje troškova slanja linijom
 		</naslov>
 		<prez>
-
+			09/40:42
 		</prez>
 		<book>
-
+			270:271
 		</book>
 		<laza>
-
+			Za merenje troškova slanja šalje se paket ECHO koji primalac mora
+				da vrati
+			Nameće se pitanje da li pri merenju putanje treba uzimati u obzir
+				opterećenje.
+			+ Ako se uzima u obzir, tajmer za merenje vremena obilaska se
+				aktivira kada se ECHO paket smesti u red čekanja
+			+ U suprotnom, uzima se tek kad izbije na čelo reda
+			U prvom slučaju se neopterećena linija smatra boljom putanjom
+			Postoje i argumenti protiv, naime, ako stalno prebacujemo saobraćaj
+				na slobodne linije, nećemo dostići ravnotežu već ćemo
+				oscilovati između
+			Jedno rešenje je da se saobraćaj distribuira na nekoliko linija
+				kada je to moguće
 		</laza>
 	</pitanje>
 
