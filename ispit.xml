@@ -1625,6 +1625,124 @@
 		</laza>
 	</pitanje>
 
+	<pitanje id='49'>
+		<naslov>
+			Plavljenje
+		</naslov>
+		<prez>
+			09/29:30
+		</prez>
+		<book>
+			266:267
+		</book>
+		<laza>
+			Svaki dolazni paket šalje se na sve izlazne linije osim na onu
+				sa koje je došao
+			Veliki broj duplikata može da se priguši na više načina:
+			+ Uvođenjem brojača skokova (koji se inicijalizuje na prečnik
+				podmreže ili na rastojanje između izvora i odredišta)
+			+ Uvođenjem rednih brojeva, gde usmerivač održava listu za
+				svaki od izvornih usmerivača odbacujući pakete sa brojem
+				koji je već u tabeli. I ove liste mogu da neograničeno
+				rastu pa se uvodi brojač čija vrednost znači da su već
+				prošli paketi sa brojem manjim od vrednosti brojača
+			+ Selektivno plavljenje, gde se paketi usmeravaju samo na one
+				linije koje su približno u ispravnom smeru
+			Plavljenje ima svoje primene
+			+ U vojsci, gde je izuzetna robusnost plavljenja korisna kada
+				u bilo kom trenutku bilo koji ruter može biti uništen
+			+ Kod distribuiranih baza podataka, gde treba konkurentno
+				apdejtovati veliki broj baza
+			+ Kod raćunanja metrika mreže za potrebe drugih algoritama, jer
+				plavljenje po svojoj prirodi nalazi najkraći put do
+				odredišta
+			Dijkstrin algoritam je efektivno simulacija plavljenja
+		</laza>
+	</pitanje>
+
+	<pitanje id='50'>
+		<naslov>
+			Usmeravanje zasnovano na vektoru razdaljine
+		</naslov>
+		<prez>
+			09/31:33
+		</prez>
+		<book>
+			267:268
+		</book>
+		<laza>
+			Plavljenje i usmeravanje najkraćim putem su statičke metode,
+				ova je dinamička
+			Zasniva se na održavanju i razmeni vektora razdaljine. VR rutera
+				X sadrži rastojanje od usmerivača X do svakog drugog, i
+				izlaznu liniju preko koje je dobijena ta razdaljina.
+			Naziva se još i Belman-Fordov i Ford-Fulkersonov algoritam
+			Ponovo metrika može biti broj skokova, kašnjenje ili broj paketa
+				u redu čekanja na putanji
+			Periodično, svaki usmerivač šalje svojim susedima listu
+				procenjenih kašnjenja do njih
+			Kada ruter primi tabelu od svakog suseda on iznova računa svoju
+				tabelu
+			Stara tabela se ne koristi za računanje jer nije više ažurna
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='51'>
+		<naslov>
+			Problem približavanja beskonačnosti
+		</naslov>
+		<prez>
+			09/34:35
+		</prez>
+		<book>
+			268:269
+		</book>
+		<laza>
+			Algoritam zasnovan na vektoru razdaljine u praksi ima ozbiljan
+				nedostatak: Brzo reaguje na dobre vesti ali zato vrlo
+				sporo reaguje na loše (povećanje kašnjenja na nekoj liniji
+				ili prekid neke linije ili pad rutera)
+			Kada X saopšti Y da ima putanju do Z, Y ne zna da li se on nalazi
+				na njoj, što može biti uzrok problema
+			Primer sa linearnom mrežom
+			Rezime: kada se desi loša promena na mreži, podaci u vektorima
+				razdaljine u ruterima prestaju da budu validni, što ruteri
+				ne mogu da znaju, a te nevalidne informacije se prosleđuju
+				po mreži
+		</laza>
+	</pitanje>
+
+	<pitanje id='52'>
+		<naslov>
+			Usmeravanje zasnovano na stanju veze: zadaci i upoznavanje suseda
+		</naslov>
+		<prez>
+			09/36:39
+		</prez>
+		<book>
+			269:270
+		</book>
+		<laza>
+			Link state routing - LSR
+			Vektori razdaljine su se koristili u ARPANET do 1979
+			Prešlo se na LSR iz sledećih razloga
+			+ Za merenje rastojanja je korišćena dužina reda čekanja, što
+				je sa pojavom linija bržih od 56kbps postao problem
+			+ Algoritam je sporo dostizao ravnotežu (problem približavanja
+				beskonačnosti)
+			Logika LSR je jednostavna i nalaže usmerivaču da:
+			+ otkrije svoje susede i sazna njihove mrežne adrese
+			+ izmeri vremensko rastojanje ili troškove slanja do svakog
+				svog suseda
+			+ napravi paket sa svim podacima koje do toga trenutka ima
+			+ pošalje taj paket svim usmerivačima
+			+ izračuna najkraću putanju do svakog usmerivača
+
+			
+		</laza>
+	</pitanje>
+
 </ispit>
 
 <!--
