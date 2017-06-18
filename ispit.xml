@@ -2547,6 +2547,161 @@
 		</laza>
 	</pitanje>
 
+	<pitanje id='71'>
+		<naslov>
+			Sistem DNS i prostor imena
+		</naslov>
+		<prez>
+			11/2:9
+		</prez>
+		<book>
+			441:443
+		</book>
+		<laza>
+			DNS - Domain Name System, sistem imenovanja domena
+			Nije lako pamtiti IP adrese, zato se javila potreba za
+				prevođenjem ASCII imena u numeričke IP adrese
+			U ARPANETu je postojala datoteka host.txt
+			Kasnije ovo nije bilo dovoljno pa je uveden DNS
+			DNS je hijerarhijska struktura zasnovana na domenima
+				i realizovana pomoću sistema distribuiranih baza
+				podataka
+			Resolver, razrešivač - preslikava ime domena u IP adresu
+				upitom na DNS server
+			Internet je podeljena na više od 200 osnovnih domena
+			Domeni su podeljeni na poddomene
+			Po jedan domen svakoj zemlji, domeni za različite delatnosti,
+				int, com, org, edu, gov, mil, net
+				biz, aero, ...
+			Ovaj skup nije fiksan već se vremenom proširuje
+			Do domena drugog nivoa dolazi se obraćanjem registratoru
+				osnovnog domena
+			Ime domena može biti apsolutno ili relativno (relativno se
+				NE završava tačkom, apsolutno se završava tačkom, ovo
+				je malo poznato ali stoji u specifikaciji RFC 1034)
+			Celo ime domena može imati do 255 znakova a svaki deo do 63
+			Svaki domen slobodno imenuje domene ispod sebe, imenovanje
+				nije uniformno. Primer:
+			+ cs.yale.edu
+			+ cs.vu.nl
+			+ cs.keio.ac.jp
+			Za dodavanje novog domena potrebna je dozvola hijerarhijski višeg
+				Ovo najčešće znači da treba da se plati ova registracija
+			Imenovanje domena nije vezano za fizičke mreže već organizacione
+				Primer
+
+		</laza>
+	</pitanje>
+
+	<pitanje id='72'>
+		<naslov>
+			Zapisi resursa u sistemu DNS
+		</naslov>
+		<prez>
+			11/10:28
+		</prez>
+		<book>
+			443:446
+		</book>
+		<laza>
+			Svakom domenu se može pridružiti skup zapisa
+			Najčešći zapis je IP adresa računara
+			Kada razrešivač DNS serveru preda ime domena, od njega dobije
+				zapise resursa pridružene tom domenu, ovo je i osnovna
+				funkcija DNS servera
+			Zapis resursa je petorka:
+			Ime domena, Životni vek, Klasa, Tip, Vrednost
+			Ime domena je domen za koji važi zapis
+			Životni vek je stabilnost zapisa - koliko sekundi se može
+				smatrati da je zapis tačan
+			Klasa - na internetu uvek ima vrednost IN
+			Tip:Vrednost može imati sledeće vrednosti:
+			+ SOA, sadrži ime osnovnog izvora informacija za zonu servera
+				imena, elektronsku adresu njenog administratora, jedinstveni
+				serijski broj i različite indikatore i rokove isključivanja
+				tajmera
+			+ A, najvažniji zapis, sadrži 32 bitnu adresu računara
+				Neki računari mogu imati i više adresa. U tom slučaju
+				moguće je konfigurisati server da ciklično odgovara na
+				zahteve za IP adresom
+			+ MX, sadrži ime računara koji se spreman da prihvati email za
+				taj domen
+			+ NS nabraja servere imena
+			+ CNAME omogućava pravljenje alijasa
+				abc 86400 IN CNAME def znači da je osnovno ime ustvari def,
+				a abc je alijas
+			+ PTR takođe ukazuje na drugo ime, ali za razliku od CNAME koji
+				je u stvari definicija makroa, PTR zapis predstavlja
+				regularan tip DNS podataka čije tumačenje zavisi od
+				konteksta u kome je nađen. U praksi, gotovo uvek se koristi
+				za reverse lookup (IP u ime)
+			+ HINFO daje informacije o računaru i operativnom sistemu
+			+ TXT omogućava domenu da se predstavi na proizvoljan način
+		</laza>
+	</pitanje>
+
+	<pitanje id='73'>
+		<naslov>
+			Serveri imena u sistemu DNS
+		</naslov>
+		<prez>
+			11/29:43
+		</prez>
+		<book>
+			446:448
+		</book>
+		<laza>
+			Root serveri, njihove IP adrese su opšte poznate i svaki od
+				njih zna adrese svih name servera top-level domena i ima
+				ih desetak širom sveta
+			U teoriji, jedan server imena bi mogao da sadrži celu DNS
+				bazu podataka. U praksi to ne bi funkcionisalo jer bi
+				on bio preopterećen, a ako on otkaže, otkazao bi i ceo
+				Internet, odnosno, ne bismo mogli da se povežemo na usluge
+				koje normalno koristimo, jer ne pamtimo njihove IP adrese
+			DNS prostor imena je podeljen na više disjunktnih zona
+			Svaka zona sadrži deo stabla i servere imena sa informacijama
+				o toj zoni
+			
+			Mehanizam dobijanja zapisa resursa:
+			+ Razrešivač upućuje zahtev lokalnom serveru imena
+			+ Ako traženi domen spada u zonu tog servera imena, server
+				vraća meritorni (authoritative) zapise - zapis koji je
+				sigurno ispravan. Kontrast sa keširanim zapisom
+			+ U suprotnom, ovaj server će pitati svoj nadređeni server,
+				i tako redom dok se ne dođe do zajedničkog pretka u stablu
+				za lokalni server i ciljni
+			+ flits.cs.vu.nl pita cs.vu.nl koji pita edu-server.net koji
+				pita yale.edu koji pita cs.yale.edu koji zna gde je
+				linda.cs.yale.edu
+			Mehanizam je rekurzivan što omogućava svakom od usputnih servera
+				da kešira odgovor. Još jednom, keširani podaci nisu meritorni
+
+			Rekurzivno ispitivanje. Drugi način je da server saopštava klijentu
+				ime sledećeg servera koji možda zna odgovor
+			Ako ne dobije od jednog servera odgovor u doglednom vremenu,
+				ističe tajmer i upit se postavlja narednom serveru imena
+
+			Jednostavan protokol za pristup imenicama: LDAP, Light-weight
+				Directory Access Protocol
+		</laza>
+	</pitanje>
+
+	<pitanje id='74'>
+		<naslov>
+			Sistem elektronske pošte, arhitektura i usluge
+		</naslov>
+		<prez>
+			11/44:54
+		</prez>
+		<book>
+			448:451
+		</book>
+		<laza>
+			
+		</laza>
+	</pitanje>
+
 </ispit>
 
 <!--
