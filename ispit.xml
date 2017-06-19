@@ -2057,7 +2057,7 @@
 			Postoje sledeće operacije (primitive):
 			LISTEN - ne šalju se paketi, proces se blokira dok ne dođe zahtev
 				za vezom
-			CONNECt - šalje se CONN. REQ. paket, aktivno se pokušava konekcija
+			CONNECT - šalje se CONN. REQ. paket, aktivno se pokušava konekcija
 			SEND - šalju paketi sa podacima
 			RECEIVE - ne šalju se paketi - proces se blokira se dok ne stigne
 				paket sa podacima
@@ -2426,11 +2426,11 @@
 			Transmission Control Protocol - protokol za upravljanje prenosom
 			Namena mu je da obezbedi pouzdan tok bajtova kroz nepouzdanu
 				kombinovanu mrežu
-			Svaki računar koji podržava TCO ima TCP transportnu jedinicu:
+			Svaki računar koji podržava TCP ima TCP transportnu jedinicu:
 			+ kao proceduru u biblioteci
 			+ kao korisnički proces
 			+ kao deo jezgra OS
-			U sva tri slučaja TCP jedinica rasi sa TCP tokovima i obezbeđuje
+			U sva tri slučaja TCP jedinica radi sa TCP tokovima i obezbeđuje
 				interfejs ka IP sloju
 			Ova jedinica prihvata tokove korisničkih podataka od lokalnih
 				procesa od najviše 64KB.
