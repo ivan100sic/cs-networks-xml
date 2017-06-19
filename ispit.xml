@@ -2817,7 +2817,191 @@
 			454:459
 		</book>
 		<laza>
-			...
+			Format MIME rešava probleme koji su postojali kod RFC 822
+			U telo poruke uvodi strukturu i definiše pravila kodiranja
+				netekstualnih poruka, ali u osnovi i dalje omogućava
+				korišćenje formata prema dokumentu RFC 822 što značo
+				da se poruke i dalje mogu razmenjivati pomoću starijih
+				programa
+			Treba promeniti samo programe za slanje i primanje poruka, što
+				mogu da učine sami korisnici
+			Pet novih zaglavlja:
+			+ MIME-Version
+				Identifikuje MIME verziju i označava da se koristi MIME
+				format. Ako ga nema smatra se da se koristi RFC
+			+ Content-Description
+				Sadrži tekst sa opisom sadržaja poruke, naslov
+			+ Content-Id
+				Identifikuje sadržaj, koristi se isti format kao i za polje
+				Message-ID osnovnog zaglavlja
+			+ Content-Transfer-Encoding
+				Saopštava način prelamanja (kodiranja) poruka
+				Pet načina prelamanja:
+				+ Običan 7-bitni ASCII, nijedan red ne sme da ima više od 1000
+					karaktera
+				+ 8-bit prošireni ASCII, isto
+				+ Base64 odnosno ASCII armor, algoritam za konverziju, može
+					se poslati bilo kakva binarna datoteka
+				+ Quoted-printable
+					Samo ASCII znaci sa kodom većim od 127 se kodiraju i to
+					pomoću znaka jednakosti i hex koda
+				+ Korisnik može sam definisati način kodiranja
+			+ Content-Type:
+				tip/podtip
+				Primer: video/mpeg
+				Vredno pomena: multipart/mixed, alternative, parallel, digest
+		</laza>
+	</pitanje>
+
+	<pitanje id='78'>
+		<naslov>
+			Protokol SMTP
+		</naslov>
+		<prez>
+			11/85:92
+		</prez>
+		<book>
+			459:461
+		</book>
+		<laza>
+			Simple Mail Transfer Protocol - jednostavan protokol za prenos
+				pošte
+			Sistem prenosa poruke bavi se upućivanjem poruke od pošiljaoca
+				do primaoca
+			Najjednostavnije je da se prethodno uspostavi veza između izvornog
+				i odredišnog računara ali postoje situacije kada to ne ide
+			Email se na Internetu isporučuje tako što izvorni računar uspostavi
+				TCP vezu sa portom 25 odredišnog računara.
+			Na tom portu osluškuje sistemski servis koji razume SMTP
+			Ova usluga prvo uspostavlja vezu a zatim kopira poruke sa njih u
+				odgovarajuće mailboxove
+			Ako se poruka ne može isporučiti vraća se izveštaj o grešci
+			Jednostavan protokol, Prvo se server predstavlja, zatim klijent,
+				pa klijent kaže za koga je poruka i ko je šalje. Ako server
+				prihvati, klijent kaže DATA, nakon čega mu server kaže
+				kako da završi poruku. Klijent tada pošalje poruku, server
+				odgovara da je sve u redu, klijent kaže QUIT i veza se zatvara
+			Iako je SMTP dobro definisan mogu da se jave i problemi:
+			+ Dužina poruke, neke stare realizacije ne mogu da obrade poruke
+				duže od 64KB
+			+ Ako klijent i server imaju različito podešene tajmere, jedan od
+				njih može odustati usred posla
+			+ Da bi se ovi problemi rešili definisan je ESMTP, klijent koji
+				želi da koristi ovaj protokol šalje EHLO
+		</laza>
+	</pitanje>
+
+	<pitanje id='78'>
+		<naslov>
+			Protokol POP3
+		</naslov>
+		<prez>
+			11/93:103
+		</prez>
+		<book>
+			461:464
+		</book>
+		<laza>
+			Ako potencijalni primalac nije trenutno na vezi, ne može da se
+				uspostavi TCP veza. Jedno rešenje je da agent za prenos
+				poruka na ISP računaru prihvata poštu za svoje korisnike i
+				da je smešta u njihove mailboxove
+			POP3 - Post Office Protocol verzija 3, služi za preuzimanje pošte
+				sa udaljenog poštanskog sandučeta
+			Dijagram kada je primalac morao da bude na vezi i kad ne mora
+			TCP port 110
+			Tri faze:
+			+ Ovlašćivanje (username i password)
+			+ Transakcije, preuzimaju se poruke, obeležavaju se za brisanje
+			+ Ažuriranje (brišu se obeležene poruke)
+			Naredbe su USER, PASS, LIST, RETR, DELE, QUIT
+		</laza>
+	</pitanje>
+
+	<pitanje id='80'>
+		<naslov>
+			Arhitektura veba: klijentski i serverski deo
+		</naslov>
+		<prez>
+			11/104:113
+		</prez>
+		<book>
+			466:475
+		</book>
+		<laza>
+			WWW - World Wide Web, globalna mreža
+			WWW predstavlja strukturu namenjenu pristupanju povezanim
+				dokumentima iz milion računara širom interneta
+			Distribuirani sistem koji brzo raste
+			Popularan zbog bogatom grafičkog interfejsa, lakoće korišćenja
+				i obilja informacija
+			Začet u CERN-u 1989 iz potrebe da se dobijeni podaci distribuiraju
+				udaljenim korisnicima širom sveta koji timskim radom vrše
+				analizu i razmenjuju podatke
+			Prvi put pušten u rad tekstualni prototip.
+			1991. prva javna demonstracija WWW u San Antoniju
+
+			Iz ugla korisnika, veb je ogromna globalna zbirka dokumenata
+				zvanih Veb strane
+			Na svakoj strani mogu biti hiperveze ka drugim stranama
+			Mogućnost da jedna strana ukazuje na drugu (hipertekst) smislio
+				je Vanevar Buš, profesor elektronike na MITu još 1945. god
+			Stranice se gledaju pomoću programa zvanog Veb brauzer, čitač,
+				pretraživač. Danas su popularni Chrome, Firefox, ranije
+				Internet Explorer, Netscape
+			Mehanizam kojim se sa servera dovlači strana, preko HTTP, port 80
+		</laza>
+	</pitanje>
+
+	<pitanje id='81'>
+		<naslov>
+			Arhitektura veba: URL
+		</naslov>
+		<prez>
+			11/114:121
+		</prez>
+		<book>
+			475:477
+		</book>
+		<laza>
+			Ugrađena hiperveza mora na neki način da ukazuje na određenu stranu
+			Svaka strana na Web-u ima tzv jedinstvenu adresu resursa (URL)
+			URL se sastoji iz 3 dela:
+			+ Imena protokola: http, ftp, https, ...
+			+ DNS imena računara na kome se stranica nalazi "google.com"
+			+ Ime datoteke koja predstavlja stranu "/products.html/"
+			Kada korisnik pritisne vezu, čitač preduzima niz koraka da bi
+				preuzeo odabranu stranu
+			+ Prvo čitač određuje URL na osnovu onoga što je korisnik pritiso
+			+ Čitač od DNS servera traži IP adresu računara iz DNS dela URLa
+			+ DNS server odgovara sa IP adresom
+			+ Čitač upostavlja TCP vezu sa odgovarajućim portom na računaru
+				za HTTP to je port 80
+			+ Čitač zahteva datoteku iz trećeg dela URLa, npr.
+				"/home/index.html"
+			+ Server odgovara sa sadržajem te datoteke
+			+ TCP veza se raskida
+			+ Čitač prikazuje sadržaj dobijene datoteke
+			+ Čitač preuzima i prikazuje sve slike u toj datoteci, ako ih ima
+				Isto važi i za ostale eksterne sadržaje
+
+			Sa strane servera to izgleda ovako:
+			+ Prihvataju se TCP veze sa klijentima (čitačima)
+			+ Dobija se zahtev, odakle se vadi ime zahtevane datoteke
+			+ Preuzima se datoteka sa diska
+			+ Šalje se klijentu
+			+ Veza se raskida
+
+			Neki od protokola:
+			Ime   , Svrha         , Primer
+			http  , Hipertekst    , http://www.cs.vu.nl/~ast/
+			file  , FTP           , ftp://ftp.cs.vu.nl/pub/minix/README
+			file  , Lokalni fajl  , file:///usr/suzanne/prog.c
+			news  , Grupa za vesti, news:comp.os.minix
+			news  , Ćlanak vesti  , news:AA0134223112@cs.utah.edu
+			gopher, Gopher        , gopher://gopher.tc.umn.edu/11/Libraries
+			mailto, Slanje emaila , mailto:JohnUser@acm.org
+			telnet, Udaljeni login, telnet://www.w3.org:80
 		</laza>
 	</pitanje>
 
