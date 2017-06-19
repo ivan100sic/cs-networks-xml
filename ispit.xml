@@ -846,12 +846,12 @@
 			Ograničenja:
 
 			Henri Nikvist je 1924. otkrio da i savršeni kanal ima ograničeni
-				kapacitet prenosa, a Kold Šenon je 1948. proširio Nikvistovu
+				kapacitet prenosa, a Klod Šenon je 1948. proširio Nikvistovu
 				jednačinu na kanale sa termičkim šumom.
 
 			Nikvistova teorema glasi: ako se proizvoljni signal prenosi kroz
 				filter propusnog opsega H (bez slabljenja do H, nakon H
-				apsolutno slabljenje), data se filtrirani signal može
+				apsolutno slabljenje), tada se filtrirani signal može
 				rekonstruisati ako se uzorkuje brzinom 2H uzoraka u sekundi
 			Ako u sistemu ima V diskretnih nivoa, onda je najveća brzina
 				prenosa u bitovima po sekundi 2H log2 V
@@ -1383,7 +1383,8 @@
 					Ovo se uglavnom koristi u wired LAN
 				b) Stanica ne proverava da li je kanal slobodan, već naknadno
 					utvrđuje da li je paket uspešno poslat
-
+			Neki od metoda su "čista" ALOHA i ALOHA sa podelom na diskretne
+				intervale
 		</laza>
 	</pitanje>
 
