@@ -2996,7 +2996,7 @@
 			Neki od protokola:
 			Ime   , Svrha         , Primer
 			http  , Hipertekst    , http://www.cs.vu.nl/~ast/
-			file  , FTP           , ftp://ftp.cs.vu.nl/pub/minix/README
+			ftp   , FTP           , ftp://ftp.cs.vu.nl/pub/minix/README
 			file  , Lokalni fajl  , file:///usr/suzanne/prog.c
 			news  , Grupa za vesti, news:comp.os.minix
 			news  , Ćlanak vesti  , news:AA0134223112@cs.utah.edu
