@@ -2999,7 +2999,7 @@
 			ftp   , FTP           , ftp://ftp.cs.vu.nl/pub/minix/README
 			file  , Lokalni fajl  , file:///usr/suzanne/prog.c
 			news  , Grupa za vesti, news:comp.os.minix
-			news  , Ćlanak vesti  , news:AA0134223112@cs.utah.edu
+			news  , Članak vesti  , news:AA0134223112@cs.utah.edu
 			gopher, Gopher        , gopher://gopher.tc.umn.edu/11/Libraries
 			mailto, Slanje emaila , mailto:JohnUser@acm.org
 			telnet, Udaljeni login, telnet://www.w3.org:80
